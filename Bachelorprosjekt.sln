@@ -5,6 +5,25 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPagePrototype", "MyPagePrototype\MyPagePrototype.csproj", "{8777B027-ED4F-4682-8462-1A755EDFED41}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML-CSS", "HTML-CSS", "{CBFDF79C-492F-41A0-96C0-3D920260090F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSS", "CSS", "{7082CBC0-4272-4C7E-BC11-6C45ACA76A7C}"
+	ProjectSection(SolutionItems) = preProject
+		StyleSheet1.css = StyleSheet1.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML", "HTML", "{9AA869BF-8878-4757-910F-8FC9EA91462E}"
+	ProjectSection(SolutionItems) = preProject
+		HTMLPage1.html = HTMLPage1.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrap", "Bootstrap", "{295BDD43-60D1-4147-B21B-5A32B5C9D3DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Javascript", "Javascript", "{0FB3985F-C903-4F74-A103-2A91708A9BB6}"
+	ProjectSection(SolutionItems) = preProject
+		Script1.js = Script1.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +37,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7082CBC0-4272-4C7E-BC11-6C45ACA76A7C} = {CBFDF79C-492F-41A0-96C0-3D920260090F}
+		{9AA869BF-8878-4757-910F-8FC9EA91462E} = {CBFDF79C-492F-41A0-96C0-3D920260090F}
+		{295BDD43-60D1-4147-B21B-5A32B5C9D3DF} = {CBFDF79C-492F-41A0-96C0-3D920260090F}
+		{0FB3985F-C903-4F74-A103-2A91708A9BB6} = {CBFDF79C-492F-41A0-96C0-3D920260090F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09D4F92B-6435-4145-9A0A-E9B660C4E050}
