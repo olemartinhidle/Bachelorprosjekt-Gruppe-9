@@ -129,6 +129,7 @@
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="Controllers\SMSController.cs" />
+    <Compile Include="Controllers\testController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,6 +141,7 @@
     <Compile Include="Models\Map.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\SMS.cs" />
+    <Compile Include="Models\test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +191,7 @@
     <Folder Include="Views\Map\" />
     <Folder Include="Views\Response\" />
     <Folder Include="Views\SMS\" />
+    <Folder Include="Views\test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
