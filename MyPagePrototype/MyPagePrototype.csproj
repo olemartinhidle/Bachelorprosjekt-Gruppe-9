@@ -127,6 +127,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\MyCasesController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="Controllers\SMSController.cs" />
     <Compile Include="Controllers\testController.cs" />
@@ -181,6 +182,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Placeholder.cshtml" />
+    <Content Include="Views\MyCases\MyCases.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,6 +7,13 @@
 <a href="/Home/Index">Tilbake</a>
 
 <h2>Denne siden er ikke satt opp for denne prototypen</h2>
-<p>Vennligst gå tilbake til forsiden</p>
+<br />
 
+<script>
+function redirect() {
+    alert('Du blir nå sendt tilbake til min side!');
+    window.location.href = "/Home/Index";
+}
+setTimeout(redirect, 5000); // Tall i millisekund
+</script>
 
