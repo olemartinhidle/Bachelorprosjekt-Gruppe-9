@@ -2,30 +2,147 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div class="container">
+    <h1>Min side</h1><div>
+    <p>Sjekk ut vår nye tjeneste "Mine byggesaker".</p>
+         </div>
+
+    <div class="row">
+    <div class="service-cards col-xl-10 col-md-11 col-sm-10 col-12">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                <a class="card-link" href="/Home/Placeholder">
+                    <div class="service-card card-look-1 card">
+                        <div class="card-title h5">
+                            <div class="row">
+                                <div class="col-3 col-sm-12 text-sm-center card-icon">
+                                    <img src="https://minside.kristiansand.kommune.no/static/media/profil.5217ad2fc6642c49e0aa644ce5b75541.svg" alt="">
+                                </div>
+                                <div class="col-9 col-sm-12 text-sm-center card-servicename">Profil</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                <a class="card-link" href="/mine-fakturaer">
+                    <div class="service-card card-look-5 card">
+                        <div class="card-title h5">
+                            <div class="row">
+                                <div class="col-3 col-sm-12 text-sm-center card-icon">
+                                    <img src="https://minside.kristiansand.kommune.no/static/media/fakturaer.c10cf98dcfc24a18ae9d99093b49229b.svg" alt="">
+                                </div>
+                                <div class="col-9 col-sm-12 text-sm-center card-servicename">Mine fakturaer</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                <a class="card-link" href="/innboks">
+                    <div class="service-card card-look-6 card">
+                        <div class="card-title h5">
+                            <div class="row">
+                                <div class="col-3 col-sm-12 text-sm-center card-icon">
+                                    <img src="https://minside.kristiansand.kommune.no/static/media/innboks.a6ce0ee106de11f796db11569988bb2e.svg" alt="">
+                                </div><div class="col-9 col-sm-12 text-sm-center card-servicename">Innboks</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                <a class="card-link" href="/mine-skjema">
+                    <div class="service-card card-look-3 card">
+                        <div class="card-title h5">
+                            <div class="row">
+                                <div class="col-3 col-sm-12 text-sm-center card-icon">
+                                    <img src="https://minside.kristiansand.kommune.no/static/media/skjema.bf12e1c81a0421fb84232337a4362b74.svg" alt="">
+                                </div>
+                                <div class="col-9 col-sm-12 text-sm-center card-servicename">Mine skjema</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                <a class="card-link" href="/min-skatt-og-betaling">
+                    <div class="service-card card-look-7 card">
+                        <div class="card-title h5">
+                            <div class="row">
+                                <div class="col-3 col-sm-12 text-sm-center card-icon">
+                                    <img src="https://minside.kristiansand.kommune.no/static/media/skatter_og_avgifter.68b72409d1e529317a528ee95473b9f4.svg" alt="">
+                                </div>
+                                <div class="col-9 col-sm-12 text-sm-center card-servicename">Min skatt og betaling</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                <a class="card-link" href="/mine-saker">
+                    <div class="service-card card-look-2 card">
+                        <div class="card-title h5">
+                            <div class="row">
+                                <div class="col-3 col-sm-12 text-sm-center card-icon">
+                                    <img src="https://minside.kristiansand.kommune.no/static/media/mine_saker.c2de86cbaf8b0f549dc82a11c6569862.svg" alt="">
+                                </div><div class="col-9 col-sm-12 text-sm-center card-servicename">Mine saker</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                <a class="card-link" href="https://pportal.cowisys.no/kristiansand" target="_blank" rel="noopener noreferrer">
+                    <div class="service-card card-look-5 card">
+                        <div class="card-title h5">
+                            <div class="row">
+                                <div class="col-3 col-sm-12 text-sm-center card-icon">
+                                    <img class="card-look-5-parking" src="https://minside.kristiansand.kommune.no/static/media/parkering.d7df2bbcebddac179beb11b418950d8c.svg" alt="Min parkering">
+                                </div>
+                                <div class="col-9 col-sm-12 text-sm-center card-servicename">Min Parkering</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                <a class="card-link" href="/myCases" target="_blank" rel="noopener noreferrer">
+                    <div class="service-card card-look-9 card">
+                        <div class="card-title h5">
+                            <div class="row">
+                                <div class="col-3 col-sm-12 text-sm-center card-icon">
+                                    <img class="card-look-9-case" src="https://cdn2.iconfinder.com/data/icons/strongicon-vol-16/24/home-085-hammer-512.png" alt="Min parkering">
+                                </div>
+                                <div class="col-9 col-sm-12 text-sm-center card-servicename">Mine byggesaker</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+
+        </div>
+        </div>
+    <div class="col-md-4 col-12">
+        <div class="row">
+        <div class="col">
+            <div class="timeline">&nbsp;</div>
+            </div>
+            </div>
+        </div>
+        </div>
+    <div class="row">
+    <div class="col-md-8 col-12">
+        <div class="container information">
+        <div class="row">
+            <section class="information-section"></section>
+            </div>
+            </div>
+        </div>
+        </div>
 </div>

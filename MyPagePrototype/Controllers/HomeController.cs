@@ -13,18 +13,12 @@ namespace MyPagePrototype.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Placeholder()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Tom side, ettersom den ikke behøves i denne prototypen.";
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
