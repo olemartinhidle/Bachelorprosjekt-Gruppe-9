@@ -6,19 +6,20 @@ using System.Web.Mvc;
 
 namespace MyPagePrototype.Controllers
 {
-    public class HomeController : Controller
+    public class InnboksController : Controller
     {
+        // GET: Innboks
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Placeholder()
+        // GET: Innboks/Details/5
+        public ActionResult Detaljer(int id)
         {
-            ViewBag.Message = "Tom side, ettersom den ikke behøves i denne prototypen.";
-
             return View();
         }
+
 
     }
 }

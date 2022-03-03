@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MyPagePrototype.Models.Byggesaker>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Registrer ny", "Registrer")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <!--Denne må ordnes før index virker, new . . .-->
+                @Html.ActionLink("Detaljer ", "Detaljer", new { /* id=item.PrimaryKey */ }) |
+            </td>
+        </tr>
+    }
+
+</table>

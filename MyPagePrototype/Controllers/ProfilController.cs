@@ -6,29 +6,29 @@ using System.Web.Mvc;
 
 namespace MyPagePrototype.Controllers
 {
-    public class ConstructionCaseController : Controller
+    public class ProfilController : Controller
     {
-        // GET: ConstructionCase
+        // GET: Profil
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: ConstructionCase/Details/5
-        public ActionResult Details(int id)
+        // GET: Profil/Details/5
+        public ActionResult Detaljer(int id)
         {
             return View();
         }
 
-        // GET: ConstructionCase/Create
-        public ActionResult Create()
+        // GET: Profil/Create
+        public ActionResult RegistrerProfil()
         {
             return View();
         }
 
-        // POST: ConstructionCase/Create
+        // POST: Profil/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult RegistrerProfil(FormCollection collection)
         {
             try
             {
@@ -42,15 +42,15 @@ namespace MyPagePrototype.Controllers
             }
         }
 
-        // GET: ConstructionCase/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Profil/Edit/5
+        public ActionResult RedigerProfil(int id)
         {
             return View();
         }
 
-        // POST: ConstructionCase/Edit/5
+        // POST: Profil/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult RedigerProfil(int id, FormCollection collection)
         {
             try
             {
@@ -64,15 +64,15 @@ namespace MyPagePrototype.Controllers
             }
         }
 
-        // GET: ConstructionCase/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Profil/Delete/5
+        public ActionResult SlettProfil(int id)
         {
             return View();
         }
 
-        // POST: ConstructionCase/Delete/5
+        // POST: Profil/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult SlettProfil(int id, FormCollection collection)
         {
             try
             {

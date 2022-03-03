@@ -5,14 +5,12 @@ using System.Web;
 
 namespace MyPagePrototype.Models
 {
-    public class Map
+    public class Innboks
     {
-        public int MapID { get; set; }
-
-        public Map()
+        public Innboks()
         {
 
-
+            List<Melding> meldinger = new List<Melding>();
 
         }
     }
