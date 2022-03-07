@@ -4,60 +4,117 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <div class="row">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li href="/">Min side</li>&nbsp; / &nbsp;
+            <li class="breadcrumb-item active" aria-current="page">Profil</li>
+            </ol>
+            </nav>
+        </div>
+        </div>
+</div>
 
-<h2>Index</h2>
+<div class="container">
+    <div class="row">
+    <div class="col">
+        <h1>Min profil</h1>
+        </div>
+        </div>
+    <div class="row">
+    <div class="col-12">
+        <section>
+        <div>
+            <div>
+            <table class="table table-borderless krs-table-1">
+                <tbody>
+                <tr>
+                    <td class="data-label">E-post</td>
+                    <td class="data-value ellipse">olemartinhidle@hotmail.com</td>
+                    </tr>
+                <tr>
+                    <td class="data-label">Mobil</td>
+                    <td class="data-value">
+                    <a href="tel:47251703">47251703</a>
+                        </td>
+                    </tr>
+                <tr>
+                    <td class="data-label">Reservasjon mot kommunikasjon på nett?</td>
+                    <td class="data-value">Nei</td>
+                    </tr>
+                    </tbody>
+                </table>
+            <p>Disse opplysningene er hentet fra <a href="https://brukerprofil.difi.no/minprofil" target="_new">din profil
+                     </a> i Kontakt- og reservasjonsregisteret (KRR).</p>
+            <p>Kontakt- og reservasjonsregisteret er et register over innbyggerne sin digitale kontaktinformasjon og reservasjon. Det er en fellesløsning som alle offentlege virksomheter skal bruke når de utvikler tjenester.</p>
+            <p>Vi lagrer fødselsnummeret ditt og aktiviteten din på Min Side. Dersom du ønsker at denne informasjonen blir slettet, kan du trekke tilbake samtykket ditt her.</p>
+                </div>
+            <div>
+            <button id="reservation-button" type="button" class="btn btn-outline-danger">Trekk tilbake samtykke</button>
+                </div>
+            </div>
+            </section>
+        </div>
+        </div>
+</div>
+
 <!-- Her trengs potensielt id eller lignende for å kjøre-->
+<!--
+   <h2>Index</h2>
 <div>
     <h4>Profil</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.profilID)
+            Html.DisplayNameFor(model => model.profilID)
         </dt>
 
         <dt>
-            @Html.DisplayNameFor(model => model.navn)
+            Html.DisplayNameFor(model => model.navn)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.navn)
+            Html.DisplayFor(model => model.navn)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.telefonnummer)
+            Html.DisplayNameFor(model => model.telefonnummer)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.telefonnummer)
+            Html.DisplayFor(model => model.telefonnummer)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.epost)
+            Html.DisplayNameFor(model => model.epost)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.epost)
+            Html.DisplayFor(model => model.epost)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.mailØnsket)
+            Html.DisplayNameFor(model => model.mailØnsket)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.mailØnsket)
+            Html.DisplayFor(model => model.mailØnsket)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.samtykke)
+            Html.DisplayNameFor(model => model.samtykke)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.samtykke)
+            Html.DisplayFor(model => model.samtykke)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    Html.ActionLink("Back to List", "Index")
 </p>
+-->
