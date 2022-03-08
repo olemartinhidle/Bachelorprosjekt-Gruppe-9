@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<MyPagePrototype.Models.Byggesaker>
 
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +9,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Registrer ny", "Registrer")
+    @Html.ActionLink("Registrer ny", "RegistrerSak")
 </p>
 <table class="table">
     <tr>
@@ -20,8 +21,7 @@
     {
         <tr>
             <td>
-                <!--Denne må ordnes før index virker, new . . .-->
-                @Html.ActionLink("Detaljer ", "Detaljer", new { /* id=item.PrimaryKey */ }) |
+                @item;
             </td>
         </tr>
     }

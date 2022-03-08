@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyPagePrototype.Models
 {
-    public class Sak
+    public class Sak : Byggesaker
     {
         public String Eier { get; set; }
         public int SakNr { get; set; }
@@ -26,5 +26,19 @@ namespace MyPagePrototype.Models
 
         private String svar;
 
+        public Sak(int sakNr, String eier, String dato, String tema, String sakbeskjed, String svar)
+        {
+            this.sakNr = sakNr;
+            this.eier = eier;
+            this.dato = dato;
+            this.tema = tema;
+            this.sakbeskjed = sakbeskjed;
+            this.svar = svar;
+
+        }
+
+
     }
+
+    
 }

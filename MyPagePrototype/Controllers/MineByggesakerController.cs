@@ -13,19 +13,14 @@ namespace MyPagePrototype.Controllers
         public ActionResult Index()
         {
 
-            var byggesaksliste = new List<Sak>();
+            var model = new List<Sak>();
 
-            Sak sak = new Sak();
+            model.Add(new Sak(1, "Eier", "10.12.2020", "Test", "Dette er en test", "Nei takk"));
 
-            sak.SakNr = 1;
-            sak.Dato = "10.12.2020";
-            sak.Tema = "Test";
-            sak.Sakbeskjed = "Dette er en test";
-            sak.Svar = "Nei takk";
 
-            byggesaksliste.Add(sak);
+            /* Tror vi trenger en Ienum ,, er nok enklere å bare implimentere entity framework */
+            return View(model);
 
-            return View(byggesaksliste);
         }
 
         // GET: Byggesaker/Details/5
