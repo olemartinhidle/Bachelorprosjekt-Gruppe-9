@@ -9,22 +9,30 @@ namespace MyPagePrototype.Controllers
 {
     public class MineByggesakerController : Controller
     {
+
+
+
         // GET: Byggesaker
         public ActionResult Index()
         {
 
-            var model = new List<Sak>();
+            Sak sak = new Sak(1, "Eier", "10.12.2020", "Test", "Dette er en test", "Nei takk");
 
-            model.Add(new Sak(1, "Eier", "10.12.2020", "Test", "Dette er en test", "Nei takk"));
-
+            var model = sak.byggesaker.ToList();
 
             /* Tror vi trenger en Ienum ,, er nok enklere å bare implimentere entity framework */
             return View(model);
+            
 
         }
 
         // GET: Byggesaker/Details/5
         public ActionResult Detaljer(int id)
+        {
+            return View();
+        }
+
+        public ActionResult Oppsummering()
         {
             return View();
         }

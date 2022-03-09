@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Oppsummering";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .nav-bar-sum {
+        background-color: lightgray;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 1vw;
+        text-align:center;
+    }
+
+    .nav-btn-1 {
+        display: inline;
+        text-align:left;
+        background-color: darkblue;
+        border-radius: 10px;
+        border: 1px solid;
+        color: white;
+        font-family: Archivo;
+        font-weight: Bold;
+        font-size: 1vw;
+        opacity: 1;
+    }
+
+    .nav-btn-2 {
+        display: inline;
+        text-align:right;
+        background-color: darkblue;
+        border-radius: 10px;
+        border: 1px solid;
+        color: white;
+        font-family: Archivo;
+        font-weight: Bold;
+        font-size: 1vw;
+        opacity: 1;
+    }
+
+    .former-site {
+        color: black;
+        display: inline;
+        font-size: 1vw;
+        
+    }
+
+    .crock {
+        
+        display: inline;
+    }
+
+    .current-site {
+        color: darkblue;
+        display: inline;
+        font-size: 1vw;
+        
+    }
+
+    .opp-body {
+       width:100%
+       
+    }
+
+    .saksboks-status-ib {
+        font-weight: bold;
+        border-radius: 10px;
+        font-size: 1vw;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        background-color: red;
+        float: right;
+        color: black;
+        border: 1px solid;
+        margin: 20px
+    }
+
+    .kvitt-img-box  {
+        text-align:center;
+
+    }
+
+    .kvtt-img   {
+        width:80%;
+        border: 3px solid;
+        color: lightgray;
+    }
+
+    .txt-nav-cont   {
+        display:inline;
+        text-align:center;
+        margin-left:6vw;
+        margin-right:6vw;
+        
+    }
+
+
+</style>
+
+
+    <div class="nav-bar-sum">
+            <button class="nav-btn-1" onclick="window.location.href='#'">Tilbake</button>
+            <div class="txt-nav-cont">
+                <div class="former-site">1. Registrer melding</div>
+                <div class="crock"> > </div>
+                <div class="former-site">2. Kontaktinformasjon</div>
+                <div class="crock"> > </div>
+                <div class="current-site">4. Oppsummering for innsending</div>
+            </div>
+            <button class="nav-btn-2" onclick="window.location.href='Index'">Mine byggesaker</button>
+    </div>
+
+<br />
+<body class="opp-body">
+    <h2>Din innsending er vellykket!</h2>
+    <br />
+    <h5>Din innsending vil bli behandlet så fort som mulig</h5>
+    <div class="saksboks-status-ib">
+        Ubehandlet
+    </div>
+    <br /><br /><br /><br />
+    <div class="kvitt-img-box">
+        <image class="kvtt-img" src="~/Resources/kvittering-img.png"></image>
+    </div>
+</body>
+
