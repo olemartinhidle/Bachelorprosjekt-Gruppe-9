@@ -14,17 +14,7 @@ namespace MyPagePrototype.Models
         public String Sakbeskjed { get; set; }
         public String Svar { get; set; }
 
-        private int sakNr;
-
-        private String eier;
-
-        private String dato;
-
-        private String tema;
-
-        private String sakbeskjed;
-
-        private String svar;
+        public Sak() { }
 
         public Sak(int sakNr, String eier, String dato, String tema, String sakbeskjed, String svar)
         {
