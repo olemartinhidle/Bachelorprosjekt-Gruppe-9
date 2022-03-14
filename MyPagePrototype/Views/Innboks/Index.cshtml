@@ -1,9 +1,110 @@
 ﻿@model IEnumerable<MyPagePrototype.Models.Innboks>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Innboks";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<style>
+
+    .melding {
+
+        margin-bottom: 2%;
+        box-shadow: 1px;
+        border: 1px solid;
+        color:lightgray;
+
+    }
+
+    .dato-melding   {
+        font-size: 16px;
+        background-color: cadetblue;
+        color:white;
+        display:inline;
+        border-radius: 8px;
+        padding: 4px;
+
+    }
+
+    .tittel {
+        font-weight: bold;
+        margin-left: 6%;
+        color: black;
+        display: inline;
+    }
+
+    .avsender   {
+        font-size:small;
+        margin-left: 15%;
+        color:black;
+        display:inline;
+
+    }
+
+    .slett {
+        margin-left: 60%;
+        font-size:small;
+        color: black;
+        display: inline;
+    }
+
+    .arkiver {
+        font-size: small;
+        color: black;
+        display: inline;
+    }
+
+    .utskrift {
+        font-size: small;
+        color: black;
+        display: inline;
+    }
+    .link-mld {
+        margin-left: 5%;
+        color:black;
+    }
+
+    .nav-btn-2 {
+        margin-left: 45%;
+        display: inline;
+        text-align: right;
+        background-color: darkblue;
+        border-radius: 10px;
+        border: 1px solid;
+        color: white;
+        font-family: Archivo;
+        font-weight: Bold;
+        font-size: 1vw;
+        opacity: 1;
+    }
+
+    .link-down {
+        
+        color:black;
+    }
+
+    .over-strek {
+        padding: 4px;
+        margin-left: 2%;
+        margin-right: 2%;
+        border-bottom: 1px solid;
+    }
+
+    .under-strek {
+        padding: 10px;
+
+
+    }
+
+    .linje-4 {
+        margin-left: 10%;
+        padding:10px;
+
+    }
+    
+</style>
+
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
 <div class="container">
     <div class="row">
@@ -11,103 +112,103 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                     <li href="/">Min side</li>&nbsp; / &nbsp;
-                <li class="breadcrumb-item active" aria-current="page">Digital postkasse</li>
+                <li class="breadcrumb-item active" aria-current="page">Innboks</li>
             </ol>
             </nav>
         </div>
         </div>
 </div>
 
-    <div class="container krs-list-1">
-        <h1>Digital postkasse</h1>
+<div class="container krs-list-1">
+    <h1>Innboks</h1>
+    <div>
+        <p>Her kan du se svar på dine søknader og annen digital post fra kommunen.</p>
+    </div>
+
+
+    <div class="melding">
+        <div class="over-strek">
+            <div class="linje-1">
+                <h4 class="dato-melding">10.02.2022</h4>
+                <h4 class="tittel"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
+            </div>
+            <div class="linje-2">
+                <h4 class="avsender">Kristiansand kommune</h4>
+                <a class="slett" href="/#">Slett</a>
+                <a class="arkiver" href="/#">Arkiver</a>
+                <a class="utskrift">Utskrift</a>
+            </div>
+        </div>
+        <div class="under-strek">
+            <div class="linje-3">
+                <br />
+                <a class="link-mld" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" target="_blank" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
+                <button class="nav-btn-2" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
+            </div>
+            <div class="linje-4">
+                <a class="link-down" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
+            </div>
+        </div>
         <div>
-            <p>Her kan du se svar på dine søknader og annen digital post fra kommunen.</p>
-        </div>
-        <div class="message card-spacer">
-            <div class="message-title read">
-                <span class="badge badge-info">9.2.2022</span>
-                <br>
-                Byggesak
-            </div>
-            <ul>
-                <li>
-                    <div class="file">
-                        <i class="far fal fa-file-pdf fa-2x" aria-hidden="true">
-                        </i>
-                        <div class="link-and-size">
-                            <a id="title" href="~/Resources/Byggesaksmelding.pdf" aria-label="Byggesaksmelding.pdf" target="_blank">Byggesaksmelding.pdf</a>
-                            <p class="size"> 1,5MB</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div>
-                <b>Avsender: </b> Kristiansand kommune
-            </div>
-        </div>
-        <div class="message card-spacer">
-            <div class="message-title read">
-                <span class="badge badge-info">9.2.2022</span>
-                <br>Kristiansand kommune - Tittel
-            </div>
-            <ul>
-                <li>
-                    <div class="file">
-                        <i class="far fal fa-file-pdf fa-2x" aria-hidden="true"></i>
-                        <div class="link-and-size">
-                            <a id="title" href="#" aria-label="#">Kristiansand kommune - FilNavn.pdf</a>
-                            <p class="size">12,0KB</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div>
-                <b>Avsender: </b> Avsender
-            </div>
-        </div><div class="message card-spacer">
-            <div class="message-title unread">
-                <span class="badge badge-info">9.2.2022</span>
-                <br>
-                Kristiansand kommune - Tittel
-            </div>
-            <ul>
-                <li>
-                    <div class="file">
-                        <i class="far fal fa-file-pdf fa-2x" aria-hidden="true"></i>
-                        <div class="link-and-size">
-                            <a id="title" href="#" aria-label="#">Kristiansand kommune - Filnavn.pdf</a>
-                            <p class="size">12,0KB</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div>
-                <b>Avsender: </b> Avsender
-            </div>
-        </div>
-        <div class="message card-spacer">
-            <div class="message-title read">
-                <span class="badge badge-info">12.1.2022</span>
-                <br>
-                Tittel
-            </div>
-            <ul>
-                <li>
-                    <div class="file">
-                        <i class="far fal fa-file-pdf fa-2x" aria-hidden="true">
-                        </i>
-                        <div class="link-and-size">
-                            <a id="title" href="#" aria-label="#">Filnavn.pdf</a>
-                            <p class="size">142KB</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div>
-                <b>Avsender: </b> Avsender
-            </div>
         </div>
     </div>
+
+    <div class="melding">
+        <div class="over-strek">
+            <div class="linje-1">
+                <h4 class="dato-melding">10.02.2022</h4>
+                <h4 class="tittel"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
+            </div>
+            <div class="linje-2">
+                <h4 class="avsender">Kristiansand kommune</h4>
+                <a class="slett" href="/#">Slett</a>
+                <a class="arkiver" href="/#">Arkiver</a>
+                <a class="utskrift">Utskrift</a>
+            </div>
+        </div>
+        <div class="under-strek">
+            <div class="linje-3">
+                <br />
+                <a class="link-mld" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
+                <button class="nav-btn-2" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
+            </div>
+            <div class="linje-4">
+                <a class="link-down" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+
+    <div class="melding">
+        <div class="over-strek">
+            <div class="linje-1">
+                <h4 class="dato-melding">10.02.2022</h4>
+                <h4 class="tittel"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
+            </div>
+            <div class="linje-2">
+                <h4 class="avsender">Kristiansand kommune</h4>
+                <a class="slett" href="/#">Slett</a>
+                <a class="arkiver" href="/#">Arkiver</a>
+                <a class="utskrift">Utskrift</a>
+            </div>
+        </div>
+        <div class="under-strek">
+            <div class="linje-3">
+                <br />
+                <a class="link-mld" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
+                <button class="nav-btn-2" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
+            </div>
+            <div class="linje-4">
+                <a class="link-down" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+
+
+
 
 
     <!--

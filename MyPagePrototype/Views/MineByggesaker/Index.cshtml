@@ -18,8 +18,8 @@
 
     <br />
     <br />
-    <h2>Mine byggesaker</h2>
-    <p>Her vil du se en oversikt over din(e) byggesaker.</p>
+        <h2 class="mi-bygg">Mine byggesaker</h2>
+        <p>Her vil du se en oversikt over din(e) byggesaker.</p>
     <div>
         <form action="/MineByggesaker/RegistrerSak" method="get">
             <button class="bygg-btn" name="subject" type="submit">Registrer din byggesak</button>
@@ -31,20 +31,30 @@
 
 <style>
 
+    .mi-bygg {
+        font-family: Archivo;
+    }
+
+    .p {
+        font-family: Archivo;
+    }
+
     .top-inf-txt {
         font-family: Archivo;
     }
 
-
     .holder {
+        font-family: Archivo;
         display: inline;
     }
 
     .out-loc {
+        font-family: Archivo;
         display: inline;
     }
 
     .in-loc {
+        font-family: Archivo;
         display: inline;
         color: blue
     }
@@ -73,6 +83,7 @@
     }
 
     .sakboks-box {
+        font-family: Archivo;
         text-align: left;
         width: 100%;
         padding: 10px;
@@ -82,6 +93,7 @@
     }
 
     .sakboks-txt {
+        font-family: Archivo;
         text-align: left;
         display: inline;
         font-size: larger;
@@ -90,10 +102,11 @@
     }
 
     .saksboks-status-ib {
+        font-family: Archivo;
         font-weight: bold;
         border-radius: 10px;
         font-size: small;
-        background-color: red;
+        background-color: rgba(255, 0, 0, 0.59);
         float: right;
         color: black;
         padding: 2px;
@@ -101,6 +114,7 @@
     }
 
     .saksboks-status-ub {
+        font-family: Archivo;
         border-radius: 10px;
         font-size: small;
         background-color: coral;
@@ -111,6 +125,7 @@
     }
 
     .saksboks-status-fb {
+        font-family: Archivo;
         border-radius: 10px;
         font-size: small;
         background-color: forestgreen;
@@ -121,6 +136,7 @@
     }
 
     .sakboks-arrow {
+        font-family: Archivo;
         float: right;
         margin-top: 6px;
         border: solid black;
@@ -131,12 +147,13 @@
     }
 
     .saksboks-dato {
+        font-family: Archivo;
         color: black;
     }
 </style>
 
 <div class="content-container">
-<button class="sakboks-box-btn" onclick="window.location.href='Oppsummering'"">
+<button class="sakboks-box-btn" onclick="window.location.href='Oppsummering'">
     <div class="sakboks-box">
         <div class="sakboks-txt">
             Uregistrert revet bygg.

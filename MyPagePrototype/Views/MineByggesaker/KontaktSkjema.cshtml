@@ -1,0 +1,121 @@
+﻿@model MyPagePrototype.Models.Profil
+
+@{
+    ViewBag.Title = "KontaktSkjema";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<h4>Kontaktinformasjon</h4>
+
+<style>
+
+    .form-group-submit{
+
+
+
+    }
+
+    .submit-box {
+
+        
+
+    }
+
+    .btn-bekreft {
+        background-color: darkgreen;
+        border-radius: 10px;
+        border: 1px solid;
+        color: white;
+        font-family: Archivo;
+        font-weight: Bold;
+        font-size: 20px;
+        opacity: 1;
+    }
+
+    .col-md-10 {
+        display: inline;
+    }
+
+    
+    .epostsamtykke  {
+        display:inline;
+
+    }
+
+    .checkbox   {
+
+        display:inline;
+        margin-right: 1%;
+
+    }
+    
+
+    .samtykke {
+        display: inline;
+    }
+
+</style>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label>Innmelders navn</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.navn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.navn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Telefon</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.telefonnummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.telefonnummer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+           <label>Epost</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.epost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.epost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group-epostsamtykke">
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.mailØnsket)
+                    @Html.ValidationMessageFor(model => model.mailØnsket, "", new { @class = "text-danger" })
+                </div>
+            <label class="epostsamtykke">Jeg ønsker å få varsler på epost om oppdateringer knyttet til min observasjon</label>
+
+
+            </div>
+        </div>
+
+        <div class="form-group-samtykke">
+            <div class="col-md-10">
+    <div class="checkbox">
+        @Html.EditorFor(model => model.samtykke)
+        @Html.ValidationMessageFor(model => model.samtykke, "", new { @class = "text-danger" })
+    </div>
+    <label class="samtykke">Jeg samtykker til at disse opplysningene behandles i tråd med kommunens personvernerklæring</label>
+</div>
+        </div>
+        <br />
+        <div class="form-group-submit">
+            <div class="submit-box">
+                <input type="submit" value="Send inn" class="btn-bekreft" />
+            </div>
+        </div>
+    </div>
+}
+

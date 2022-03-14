@@ -181,6 +181,7 @@
     <Content Include="Views\MineByggesaker\Index.cshtml" />
     <Content Include="Views\MineByggesaker\Kvittering.cshtml" />
     <Content Include="Views\MineByggesaker\Oppsummering.cshtml" />
+    <Content Include="Views\MineByggesaker\KontaktSkjema.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

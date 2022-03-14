@@ -5286,7 +5286,7 @@ body {
     background-color: var(--bs-body-bg);
     color: #333;
     color: var(--bs-body-color);
-    font-family: var(--bs-body-font-family);
+    font-family: Archivo;
     font-size: 1rem;
     font-size: var(--bs-body-font-size);
     font-weight: 400;
