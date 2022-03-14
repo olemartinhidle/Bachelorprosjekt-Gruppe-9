@@ -52,7 +52,7 @@ namespace MyPagePrototype.Controllers
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("KontaktSkjema");
             }
             catch
             {
@@ -97,6 +97,27 @@ namespace MyPagePrototype.Controllers
                 // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        // GET: Byggesaker/Create
+        public ActionResult KontaktSkjema()
+        {
+            return View();
+        }
+
+        // POST: Byggesaker/Create
+        [HttpPost]
+        public ActionResult KontaktSkjema(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Oppsummering");
             }
             catch
             {

@@ -5,77 +5,126 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+
+
+
+
+    .drop-field {
+
+        padding: 1%;
+        width: 100%
+
+    }
+
+    .input-field {
+        padding: 1%;
+        width: 100%
+    }
+
+    .form-reg-sak {
+        
+    }
+
+    .form-group-bunn    {
+        display: inline;
+    }
+
+    .l-areal    {
+
+        margin-right:47.5%;
+
+    }
+
+    .i-areal  {
+        padding: 1%;
+        width: 46%;
+        
+    }
+
+    .ny-høyde {
+        float:right;
+        padding: 1%;
+        width: 46%;
+    }
+
+    .btn-bekreft {
+        background-color: darkgreen;
+        border-radius: 10px;
+        border: 1px solid;
+        color: white;
+        font-family: Archivo;
+        font-weight: Bold;
+        font-size: 20px;
+        opacity: 1;
+    }
+
+
+</style>
+
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
+<div class="form-reg-sak">
     <br />
     <h3>Registrer din byggesak</h3>
     <p>Vennligst skriv inn riktige detaljer og trykk bekreft</p>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        <label>Velg tema</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SakNr, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SakNr, "", new { @class = "text-danger" })
-        </div>
+        <label>Velg tema</label><br />
+            <select class="drop-field" name="Tema" id="tema">
+                <option value="Byggesak">Byggesak</option>
+                <option value="Placeholder">Placeholder</option>
+            </select>
     </div>
-
+    <br />
     <div class="form-group">
-        <label>Type bygg</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Eier, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Eier, "", new { @class = "text-danger" })
-        </div>
+        <label>Type bygg</label> <br />
+        <select class="drop-field" name="TypeBygg" id="typebygg">
+            <option>Uregistrert bygg</option>
+            <option>Revet bygg</option>
+            <option>Tilbygg</option>
+        </select>
     </div>
-
+    <br />
     <div class="form-group">
         <label>Bygningsnummer</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Dato, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Dato, "", new { @class = "text-danger" })
-        </div>
+        
+            <input class="input-field" type="text" id="byggnr">
+        
     </div>
-
+    <br />
     <div class="form-group">
         <label>Status</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Tema, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Tema, "", new { @class = "text-danger" })
-        </div>
+        
+            <input class="input-field" type="text" id="status" name="status">
+       
     </div>
-
+    <br />
     <div class="form-group">
-        <label>Næringsgruppa</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Sakbeskjed, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Sakbeskjed, "", new { @class = "text-danger" })
-        </div>
+        <label>Næringsgruppe</label>
+        
+            <select class="drop-field" name="gruppe" id="gruppe">
+                <option value="Bolig">Bolig</option>
+                <option value="Næringsbygg">Næringsbygg</option>
+            </select>
+        
     </div>
-
-    <div class="form-group">
-        <label>Nytt areal</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Svar, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Svar, "", new { @class = "text-danger" })
-        </div>
+    <br />
+    <div class="form-group-bunn">
+        <label class="l-areal">Nytt areal</label> <label>Ny høyde</label> <br />
+        <input class="i-areal" name="nyttareal" id="nyttareal">
+        <input class="ny-høyde" name="nyhøyde" id="nyhøyde">        
     </div>
-
-    <div class="form-group">
-        <label>Ny høyde</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Svar, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Svar, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    <br />
     <br />
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Bekreft" class="btn btn-default" />
+        <div>
+            <input type="submit" value="Bekreft" class="btn-bekreft" />
         </div>
     </div>
 </div>
