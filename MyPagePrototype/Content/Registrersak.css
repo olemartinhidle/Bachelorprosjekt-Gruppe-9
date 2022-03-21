@@ -1,0 +1,46 @@
+﻿
+.drop-field {
+    padding: 1%;
+    width: 100%
+}
+
+.input-field {
+    padding: 1%;
+    width: 100%
+}
+
+.content-container-60 {
+    font-family: Arial;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.form-group-bunn {
+    display: inline;
+}
+
+.l-areal {
+    margin-right: 47.5%;
+}
+
+.i-areal {
+    padding: 1%;
+    width: 46%;
+}
+
+.ny-høyde {
+    float: right;
+    padding: 1%;
+    width: 46%;
+}
+
+.btn-bekreft {
+    background-color: darkgreen;
+    border-radius: 10px;
+    border: 1px solid;
+    color: white;
+    font-family: Arial;
+    font-weight: Bold;
+    font-size: 20px;
+    opacity: 1;
+}

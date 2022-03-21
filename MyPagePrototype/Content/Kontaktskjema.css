@@ -1,0 +1,43 @@
+﻿.content-container-60 {
+    font-family: Arial;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.form-group-submit {
+
+}
+
+.submit-box {
+
+}
+
+.btn-bekreft {
+    background-color: darkgreen;
+    border-radius: 10px;
+    border: 1px solid;
+    color: white;
+    font-family: Arial;
+    font-weight: Bold;
+    font-size: 20px;
+    opacity: 1;
+}
+
+.col-md-10 {
+    display: inline;
+}
+
+
+.epostsamtykke {
+    display: inline;
+}
+
+.checkbox {
+    display: inline;
+    margin-right: 1%;
+}
+
+
+.samtykke {
+    display: inline;
+}

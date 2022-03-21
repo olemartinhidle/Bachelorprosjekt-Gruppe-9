@@ -34,7 +34,29 @@ namespace MyPagePrototype.Controllers
 
         public ActionResult Oppsummering()
         {
+            if ((TempData["shortMessage"] != null))
+            {
+                ViewBag.Status = TempData["shortMessage"].ToString();
+            }
             return View();
+        }
+
+        public ActionResult OppIB()
+        {
+            TempData["shortMessage"] = "ib";
+            return RedirectToAction("Oppsummering");
+        }
+
+        public ActionResult OppUB()
+        {
+            TempData["shortMessage"] = "ub";
+            return RedirectToAction("Oppsummering");
+        }
+
+        public ActionResult OppFB()
+        {
+            TempData["shortMessage"] = "fb";
+            return RedirectToAction("Oppsummering");
         }
 
 

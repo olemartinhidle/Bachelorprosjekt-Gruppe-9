@@ -6,78 +6,9 @@
     <title>@ViewBag.Title - Min side</title>
 
     @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/Navbar.css")
     @Scripts.Render("~/bundles/modernizr")
-
-
-    <style>
-
-        .nav-bar-sum {
-            background-color: lightgray;
-            padding-top: 16px;
-            padding-bottom: 16px;
-            padding-left: 16px;
-            padding-right: 16px;
-            font-size: 1vw;
-            text-align: center;
-        }
-
-        .nav-btn-1 {
-            display: inline;
-            text-align: left;
-            background-color: darkblue;
-            border-radius: 10px;
-            border: 1px solid;
-            color: white;
-            font-family: Archivo;
-            font-weight: Bold;
-            font-size: 1vw;
-            opacity: 1;
-        }
-
-        .nav-btn-2 {
-            display: inline;
-            text-align: right;
-            background-color: darkblue;
-            border-radius: 10px;
-            border: 1px solid;
-            color: white;
-            font-family: Archivo;
-            font-weight: Bold;
-            font-size: 1vw;
-            opacity: 1;
-        }
-
-        .txt-nav-cont {
-            display: inline;
-            text-align: center;
-            margin-left: 6vw;
-            margin-right: 6vw;
-        }
-
-        .site-1 {
-            color: black;
-            display: inline;
-            font-size: 1vw;
-        }
-
-        .site-2 {
-            color: black;
-            display: inline;
-            font-size: 1vw;
-        }
-
-        .crock {
-            display: inline;
-        }
-
-        .current-site {
-            color: darkblue;
-            display: inline;
-            font-size: 1vw;
-        }
-    </style>
-
-
+    @RenderSection("styles", false);
 
 </head>
 <body>
@@ -107,13 +38,12 @@
     @if ((ViewBag.Title == "Oppsummering") || (ViewBag.Title == "RegistrerSak") || (ViewBag.Title == "KontaktSkjema"))
     {
         @:<div class="nav-bar-sum">
-            @:<button class="nav-btn-1" onclick="window.location.href='#'">Tilbake</button>
+            @:<button class="nav-btn-1" onclick="history.back()">Tilbake</button>
             @:<div class="txt-nav-cont">
         if (ViewBag.Title == "RegistrerSak")
         {
             @:<div class="current-site">1. Registrer melding</div>
         }
-
         if (ViewBag.Title != "RegistrerSak")
         {
             @:<div class="site-1">1. Registrer melding</div>
@@ -128,43 +58,26 @@
             @:<div class="site-2">2. Kontaktinformasjon</div>
         }
             @:<div class="crock"> > </div>
-
         if (ViewBag.Title == "Oppsummering")
         {
             @:<div class="current-site">4. Oppsummering for innsending</div>
         }
-
         if (ViewBag.Title != "Oppsummering")
         {
             @:<div class="site-1">4. Oppsummering for innsending</div>
-        }
-    
+        }    
             @:</div>
             @:<button class="nav-btn-2" onclick="window.location.href='Index'">Mine byggesaker</button>
         @:</div>
     }
 
-
-    <!--
-    <div class="navbar-logo">
-        <a href="/Home/Index">
-            <img src="https://minside.kristiansand.kommune.no/static/media/krs-logo-original.63e40cb9206a731a519e6369fac496b4.svg" alt="">
-        </a>
-    </div>
-
-    <div class="nav-link"
-        <a href="#">Logg ut</a>
-     </div>
-    -->
-
-    <div class="container body-content">
+    <div class="body-layout">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Vårt bachelorprosjekt hos TietoEvry</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

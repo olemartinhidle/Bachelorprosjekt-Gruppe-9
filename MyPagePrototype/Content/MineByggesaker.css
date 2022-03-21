@@ -1,0 +1,119 @@
+﻿
+.content-container-60 {
+    font-family: Arial;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.p {
+}
+
+.top-inf-txt {
+    margin-left: 10%;
+    width: 80%;
+}
+
+.holder {
+    display: inline;
+}
+
+.out-loc {
+    display: inline;
+}
+
+.in-loc {
+    display: inline;
+    color: blue
+}
+
+.bygg-btn {
+    background-color: darkblue;
+    border-radius: 10px;
+    border: 1px solid;
+    color: white;
+    font-weight: Bold;
+    font-size: 20px;
+    opacity: 1;
+}
+
+.sakboks-box-btn {
+    border: 1px solid;
+    color: darkgray;
+    width: 100%;
+    padding: 10px;
+    height: 100px;
+    box-shadow: 2px 5px;
+    background-color: white;
+    margin-bottom: 16px;
+}
+
+.sakboks-box {
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+    height: 80px;
+    margin: auto;
+    opacity: 1;
+}
+
+.sakboks-txt {
+    text-align: left;
+    display: inline;
+    font-size: larger;
+    font-weight: bold;
+    color: black;
+}
+
+.saksboks-status-ib {
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: small;
+    background-color: rgba(255, 0, 0, 0.59);
+    float: right;
+    color: black;
+    padding: 4px;
+    border: 1px solid;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-weight: lighter;
+}
+
+.saksboks-status-ub {
+    border-radius: 10px;
+    font-size: small;
+    background-color: rgba(242, 170, 129, 1);
+    float: right;
+    color: black;
+    padding: 4px;
+    border: 1px solid;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-weight: lighter;
+}
+
+.saksboks-status-fb {
+    border-radius: 10px;
+    font-size: small;
+    background-color: rgba(0, 135, 38, 0.47);
+    float: right;
+    color: black;
+    padding: 4px;
+    border: 1px solid;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-weight: lighter;
+}
+
+.sakboks-arrow {
+    float: right;
+    margin-top: 6px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    padding: 5px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.saksboks-dato {
+    color: black;
+}
