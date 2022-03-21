@@ -1,0 +1,66 @@
+﻿
+.nav-bar-sum {
+    font-family: Arial;
+    background-color: lightgray;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 1vw;
+    text-align: center;
+}
+
+.nav-btn-1 {
+    font-family: Arial;
+    display: inline;
+    text-align: left;
+    background-color: darkblue;
+    border-radius: 10px;
+    border: 1px solid;
+    color: white;
+    font-weight: Bold;
+    font-size: 1vw;
+    opacity: 1;
+}
+
+.nav-btn-2 {
+    font-family: Arial;
+    display: inline;
+    text-align: right;
+    background-color: darkblue;
+    border-radius: 10px;
+    border: 1px solid;
+    color: white;
+    font-weight: Bold;
+    font-size: 1vw;
+    opacity: 1;
+}
+
+.txt-nav-cont {
+    display: inline;
+    text-align: center;
+    margin-left: 6vw;
+    margin-right: 6vw;
+}
+
+.site-1 {
+    color: black;
+    display: inline;
+    font-size: 1vw;
+}
+
+.site-2 {
+    color: black;
+    display: inline;
+    font-size: 1vw;
+}
+
+.crock {
+    display: inline;
+}
+
+.current-site {
+    color: darkblue;
+    display: inline;
+    font-size: 1vw;
+}

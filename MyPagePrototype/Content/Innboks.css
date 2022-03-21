@@ -1,0 +1,94 @@
+﻿
+.mld-inn {
+    padding: 0.3vw;
+    font-family: Arial;
+    margin-bottom: 2vw;
+    box-shadow: 1px;
+    border: 1px solid;
+    color: lightgray;
+}
+
+.d-mld-inn {
+    font-size: 1vw;
+    background-color: cadetblue;
+    color: white;
+    display: inline;
+    border-radius: 8px;
+    padding: 0.3vw;
+}
+
+.tittel-inn {
+    font-size: 1.3vw;
+    font-weight: bold;
+    margin-left: 1.5vw;
+    color: black;
+    display: inline;
+}
+
+.avsender-inn {
+    font-size: 1vw;
+    margin-left: 7.5vw;
+    color: black;
+    display: inline;
+}
+
+.slett-inn {
+    margin-left: 33.6vw;
+    font-size: 1vw;
+    color: black;
+    display: inline;
+}
+
+.arkiver-inn {
+    font-size: 1vw;
+    color: black;
+    display: inline;
+}
+
+.utskrift-inn {
+    font-size: 1vw;
+    color: black;
+    display: inline;
+}
+
+.link-mld-inn {
+    margin-left: 2vw;
+    font-size: 1vw;
+    color: black;
+}
+
+.blaa-btn-inn {
+    margin-left: 27vw;
+    display: inline;
+    text-align: right;
+    background-color: darkblue;
+    border-radius: 10px;
+    border: 1px solid;
+    color: white;
+    font-family: Arial;
+    font-weight: Bold;
+    font-size: 1vw;
+    opacity: 1;
+}
+
+.link-down-inn {
+    font-size: 1vw;
+    color: black;
+}
+
+.o-strek-inn {
+    padding: 4px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-bottom: 1px solid;
+}
+
+.u-strek-inn {
+    padding: 10px;
+}
+
+.l-4-inn {
+    margin-left: 10%;
+    padding: 10px;
+}
+

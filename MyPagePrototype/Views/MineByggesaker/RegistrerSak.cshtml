@@ -5,128 +5,75 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
+@section Styles {
+    <link href="@Url.Content("~/Content/Registrersak.css")" rel="stylesheet" type="text/css" />
+}
 
 
-
-
-    .drop-field {
-
-        padding: 1%;
-        width: 100%
-
-    }
-
-    .input-field {
-        padding: 1%;
-        width: 100%
-    }
-
-    .form-reg-sak {
-        
-    }
-
-    .form-group-bunn    {
-        display: inline;
-    }
-
-    .l-areal    {
-
-        margin-right:47.5%;
-
-    }
-
-    .i-areal  {
-        padding: 1%;
-        width: 46%;
-        
-    }
-
-    .ny-høyde {
-        float:right;
-        padding: 1%;
-        width: 46%;
-    }
-
-    .btn-bekreft {
-        background-color: darkgreen;
-        border-radius: 10px;
-        border: 1px solid;
-        color: white;
-        font-family: Archivo;
-        font-weight: Bold;
-        font-size: 20px;
-        opacity: 1;
-    }
-
-
-</style>
-
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-reg-sak">
-    <br />
-    <h3>Registrer din byggesak</h3>
-    <p>Vennligst skriv inn riktige detaljer og trykk bekreft</p>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        <label>Velg tema</label><br />
+
+    <div class="content-container-60">
+        <br />
+        <h3>Registrer din byggesak</h3>
+        <p>Vennligst skriv inn riktige detaljer og trykk bekreft</p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label>Velg tema</label><br />
             <select class="drop-field" name="Tema" id="tema">
                 <option value="Byggesak">Byggesak</option>
                 <option value="Placeholder">Placeholder</option>
             </select>
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Type bygg</label> <br />
-        <select class="drop-field" name="TypeBygg" id="typebygg">
-            <option>Uregistrert bygg</option>
-            <option>Revet bygg</option>
-            <option>Tilbygg</option>
-        </select>
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Bygningsnummer</label>
-        
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Type bygg</label> <br />
+            <select class="drop-field" name="TypeBygg" id="typebygg">
+                <option>Uregistrert bygg</option>
+                <option>Revet bygg</option>
+                <option>Tilbygg</option>
+            </select>
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Bygningsnummer</label>
+
             <input class="input-field" type="text" id="byggnr">
-        
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Status</label>
-        
+
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Status</label>
+
             <input class="input-field" type="text" id="status" name="status">
-       
-    </div>
-    <br />
-    <div class="form-group">
-        <label>Næringsgruppe</label>
-        
+
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Næringsgruppe</label>
+
             <select class="drop-field" name="gruppe" id="gruppe">
                 <option value="Bolig">Bolig</option>
                 <option value="Næringsbygg">Næringsbygg</option>
             </select>
-        
-    </div>
-    <br />
-    <div class="form-group-bunn">
-        <label class="l-areal">Nytt areal</label> <label>Ny høyde</label> <br />
-        <input class="i-areal" name="nyttareal" id="nyttareal">
-        <input class="ny-høyde" name="nyhøyde" id="nyhøyde">        
-    </div>
-    <br />
-    <br />
 
-    <div class="form-group">
-        <div>
-            <input type="submit" value="Bekreft" class="btn-bekreft" />
+        </div>
+        <br />
+        <div class="form-group-bunn">
+            <label class="l-areal">Nytt areal</label> <label>Ny høyde</label> <br />
+            <input class="i-areal" name="nyttareal" id="nyttareal">
+            <input class="ny-høyde" name="nyhøyde" id="nyhøyde">
+        </div>
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div>
+                <input type="submit" value="Bekreft" class="btn-bekreft" />
+            </div>
         </div>
     </div>
-</div>
 }
 

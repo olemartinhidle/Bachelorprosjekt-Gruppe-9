@@ -2,94 +2,37 @@
 @{
     ViewBag.Title = "Oppsummering";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    @section Styles {
+        <link href="@Url.Content("~/Content/Oppsummering.css")" rel="stylesheet" type="text/css" />
+    }
+
 }
 
-<style>
-    .nav-bar-sum {
-        background-color: lightgray;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        padding-left: 16px;
-        padding-right: 16px;
-        font-size: 1vw;
-        text-align:center;
-    }
-
-    .nav-btn-1 {
-        display: inline;
-        text-align:left;
-        background-color: darkblue;
-        border-radius: 10px;
-        border: 1px solid;
-        color: white;
-        font-family: Archivo;
-        font-weight: Bold;
-        font-size: 1vw;
-        opacity: 1;
-    }
-
-    .nav-btn-2 {
-        display: inline;
-        text-align:right;
-        background-color: darkblue;
-        border-radius: 10px;
-        border: 1px solid;
-        color: white;
-        font-family: Archivo;
-        font-weight: Bold;
-        font-size: 1vw;
-        opacity: 1;
-    }
-
-
-    .opp-body {
-       width:100%
-       
-    }
-
-    .saksboks-status-ib {
-        font-weight: bold;
-        border-radius: 10px;
-        font-size: 1vw;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-        background-color: red;
-        float: right;
-        color: black;
-        border: 1px solid;
-        margin: 20px
-    }
-
-    .kvitt-img-box  {
-        text-align:center;
-
-    }
-
-    .kvtt-img   {
-        width:80%;
-        border: 3px solid;
-        color: lightgray;
-    }
-
-
-
-</style>
-
-
-
 <br />
-<body class="opp-body">
+<div class="content-container-60-opp">
     <h2>Din innsending er vellykket!</h2>
     <br />
     <h5>Din innsending vil bli behandlet så fort som mulig</h5>
-    <div class="saksboks-status-ib">
-        Ubehandlet
-    </div>
+
+    @if (ViewBag.Status == "ib")
+    {
+        @:<div class="saksboks-status-ib-opp"> Ubehandlet </div>
+    }
+   
+    @if ((ViewBag.Status == "ub"))
+    {@:<div class="saksboks-status-ub-opp"> Under behandling </div>
+    }
+
+    @if ((ViewBag.Status == "fb"))
+    {
+        @:<div class="saksboks-status-fb-opp"> Ferdig behandlet </div>
+    }
+
+
     <br /><br /><br /><br />
-    <div class="kvitt-img-box">
-        <image class="kvtt-img" src="~/Resources/kvittering-img.png"></image>
-    </div>
-</body>
+
+    <image class="kvitt-img-opp" src="~/Resources/kvittering-img.png"></image>
+
+</div>
 

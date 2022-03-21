@@ -1,0 +1,99 @@
+﻿
+.content-container-60-opp {
+    font-family: Arial;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.nav-bar-sum {
+    background-color: lightgray;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 1vw;
+    text-align: center;
+}
+
+.nav-btn-1 {
+    display: inline;
+    text-align: left;
+    background-color: darkblue;
+    border-radius: 10px;
+    border: 1px solid;
+    color: white;
+    font-family: Arial;
+    font-weight: Bold;
+    font-size: 1vw;
+    opacity: 1;
+}
+
+.nav-btn-2 {
+    display: inline;
+    text-align: right;
+    background-color: darkblue;
+    border-radius: 10px;
+    border: 1px solid;
+    color: white;
+    font-family: Arial;
+    font-weight: Bold;
+    font-size: 1vw;
+    opacity: 1;
+}
+
+
+.opp-body {
+    width: 100%
+}
+
+.saksboks-status-ib-opp {
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1vw;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: rgba(255, 0, 0, 0.59);
+    float: right;
+    color: black;
+    border: 1px solid;
+    margin: 20px
+}
+
+.saksboks-status-ub-opp {
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1vw;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: rgba(242, 170, 129, 1);
+    float: right;
+    color: black;
+    border: 1px solid;
+    margin: 20px
+}
+
+.saksboks-status-fb-opp {
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1vw;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: rgba(0, 135, 38, 0.47);
+    float: right;
+    color: black;
+    border: 1px solid;
+    margin: 20px
+}
+
+.kvitt-img-opp {
+    text-align:center;
+    width: 98%;
+    border: 3px solid;
+    color: lightgray;
+}

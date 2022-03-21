@@ -5,79 +5,82 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Kvittering</h2>
-<!-- Her må vi sette av id, eeeeelller lage ny mappe som heter kvittering, eeeeller legge kvitt kontroller inn i byggesaker-->
-<div>
-    <h4>Kvittering</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.kvitteringsNr)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.kvitteringsNr)
-        </dd>
+<div class="content-container-60">
+    <h2>Kvittering</h2>
+    <!-- Her må vi sette av id, eeeeelller lage ny mappe som heter kvittering, eeeeller legge kvitt kontroller inn i byggesaker-->
+    <div>
+        <h4>Kvittering</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.kvitteringsNr)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dato)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.kvitteringsNr)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.dato)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.dato)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.personNavn)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.dato)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.personNavn)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.personNavn)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.telefonnummer)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.personNavn)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.telefonnummer)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.telefonnummer)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.epost)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.telefonnummer)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.epost)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.epost)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.epost)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tema)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tema)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.tema)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.kommentar)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.tema)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.kommentar)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.kommentar)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.kommentar)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

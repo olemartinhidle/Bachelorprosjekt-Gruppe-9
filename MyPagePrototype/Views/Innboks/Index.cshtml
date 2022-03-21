@@ -3,120 +3,25 @@
 @{
     ViewBag.Title = "Innboks";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<style>
+@section Styles {
+    <link href="@Url.Content("~/Content/Innboks.css")" rel="stylesheet" type="text/css" />
+}
 
-    .melding {
-
-        margin-bottom: 2%;
-        box-shadow: 1px;
-        border: 1px solid;
-        color:lightgray;
-
-    }
-
-    .dato-melding   {
-        font-size: 16px;
-        background-color: cadetblue;
-        color:white;
-        display:inline;
-        border-radius: 8px;
-        padding: 4px;
-
-    }
-
-    .tittel {
-        font-weight: bold;
-        margin-left: 6%;
-        color: black;
-        display: inline;
-    }
-
-    .avsender   {
-        font-size:small;
-        margin-left: 15%;
-        color:black;
-        display:inline;
-
-    }
-
-    .slett {
-        margin-left: 60%;
-        font-size:small;
-        color: black;
-        display: inline;
-    }
-
-    .arkiver {
-        font-size: small;
-        color: black;
-        display: inline;
-    }
-
-    .utskrift {
-        font-size: small;
-        color: black;
-        display: inline;
-    }
-    .link-mld {
-        margin-left: 5%;
-        color:black;
-    }
-
-    .nav-btn-2 {
-        margin-left: 45%;
-        display: inline;
-        text-align: right;
-        background-color: darkblue;
-        border-radius: 10px;
-        border: 1px solid;
-        color: white;
-        font-family: Archivo;
-        font-weight: Bold;
-        font-size: 1vw;
-        opacity: 1;
-    }
-
-    .link-down {
-        
-        color:black;
-    }
-
-    .over-strek {
-        padding: 4px;
-        margin-left: 2%;
-        margin-right: 2%;
-        border-bottom: 1px solid;
-    }
-
-    .under-strek {
-        padding: 10px;
-
-
-    }
-
-    .linje-4 {
-        margin-left: 10%;
-        padding:10px;
-
-    }
-    
-</style>
-
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
 <div class="container">
     <div class="row">
-    <div class="col-12">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
                     <li href="/">Min side</li>&nbsp; / &nbsp;
-                <li class="breadcrumb-item active" aria-current="page">Innboks</li>
-            </ol>
+                    <li class="breadcrumb-item active" aria-current="page">Innboks</li>
+                </ol>
             </nav>
         </div>
-        </div>
+    </div>
 </div>
 
 <div class="container krs-list-1">
@@ -126,107 +31,107 @@
     </div>
 
 
-    <div class="melding">
-        <div class="over-strek">
-            <div class="linje-1">
-                <h4 class="dato-melding">10.02.2022</h4>
-                <h4 class="tittel"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
+    <div class="mld-inn">
+        <div class="o-strek-inn">
+            <div class="l-1-inn">
+                <h4 class="d-mld-inn">10.02.2022</h4>
+                <h4 class="tittel-inn"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
             </div>
-            <div class="linje-2">
-                <h4 class="avsender">Kristiansand kommune</h4>
-                <a class="slett" href="/#">Slett</a>
-                <a class="arkiver" href="/#">Arkiver</a>
-                <a class="utskrift">Utskrift</a>
+            <div class="l-2-inn">
+                <h4 class="avsender-inn">Kristiansand kommune</h4>
+                <a class="slett-inn" href="/#">Slett</a>
+                <a class="arkiver-inn" href="/#">Arkiver</a>
+                <a class="utskrift-inn" href="/#">Utskrift</a>
             </div>
         </div>
-        <div class="under-strek">
-            <div class="linje-3">
+        <div class="u-strek-inn">
+            <div class="l-3-inn">
                 <br />
-                <a class="link-mld" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" target="_blank" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
-                <button class="nav-btn-2" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
+                <a class="link-mld-inn" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" target="_blank" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
+                <button class="blaa-btn-inn" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
             </div>
-            <div class="linje-4">
-                <a class="link-down" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
+            <div class="l-4-inn">
+                <a class="link-down-inn" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
             </div>
         </div>
         <div>
         </div>
     </div>
 
-    <div class="melding">
-        <div class="over-strek">
-            <div class="linje-1">
-                <h4 class="dato-melding">10.02.2022</h4>
-                <h4 class="tittel"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
+    <div class="mld-inn">
+        <div class="o-strek-inn">
+            <div class="l-1-inn">
+                <h4 class="d-mld-inn">10.02.2022</h4>
+                <h4 class="tittel-inn"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
             </div>
-            <div class="linje-2">
-                <h4 class="avsender">Kristiansand kommune</h4>
-                <a class="slett" href="/#">Slett</a>
-                <a class="arkiver" href="/#">Arkiver</a>
-                <a class="utskrift">Utskrift</a>
+            <div class="l-2-inn">
+                <h4 class="avsender-inn">Kristiansand kommune</h4>
+                <a class="slett-inn" href="/#">Slett</a>
+                <a class="arkiver-inn" href="/#">Arkiver</a>
+                <a class="utskrift-inn" href="/#">Utskrift</a>
             </div>
         </div>
-        <div class="under-strek">
-            <div class="linje-3">
+        <div class="u-strek-inn">
+            <div class="l-3-inn">
                 <br />
-                <a class="link-mld" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
-                <button class="nav-btn-2" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
+                <a class="link-mld-inn" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
+                <button class="blaa-btn-inn" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
             </div>
-            <div class="linje-4">
-                <a class="link-down" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
+            <div class="l-4-inn">
+                <a class="link-down-inn" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
             </div>
         </div>
         <div>
         </div>
     </div>
 
-    <div class="melding">
-        <div class="over-strek">
-            <div class="linje-1">
-                <h4 class="dato-melding">10.02.2022</h4>
-                <h4 class="tittel"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
+    <div class="mld-inn">
+        <div class="o-strek-inn">
+            <div class="l-1-inn">
+                <h4 class="d-mld-inn">10.02.2022</h4>
+                <h4 class="tittel-inn"> Melding - Oppdaget uregistrert bygg på din eiendom</h4>
             </div>
-            <div class="linje-2">
-                <h4 class="avsender">Kristiansand kommune</h4>
-                <a class="slett" href="/#">Slett</a>
-                <a class="arkiver" href="/#">Arkiver</a>
-                <a class="utskrift">Utskrift</a>
+            <div class="l-2-inn">
+                <h4 class="avsender-inn">Kristiansand kommune</h4>
+                <a class="slett-inn" href="/#">Slett</a>
+                <a class="arkiver-inn" href="/#">Arkiver</a>
+                <a class="utskrift-inn" href="/#">Utskrift</a>
             </div>
         </div>
-        <div class="under-strek">
-            <div class="linje-3">
+        <div class="u-strek-inn">
+            <div class="l-3-inn">
                 <br />
-                <a class="link-mld" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
-                <button class="nav-btn-2" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
+                <a class="link-mld-inn" id="link-mld" href="~/Resources/Byggesaksmelding.pdf" aria-label="#"><i class="fa-thin fa-file-import"></i>Trykk her for å lese brevet fra Kristiansand kommune</a>
+                <button class="blaa-btn-inn" onclick="window.location.href='/../MineByggesaker/Index'">Mine byggesaker</button>
             </div>
-            <div class="linje-4">
-                <a class="link-down" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
+            <div class="l-4-inn">
+                <a class="link-down-inn" href="~/Resources/Byggesaksmelding.pdf" download><i class="fa-thin fa-files"></i>Last ned pdf her</a>
             </div>
         </div>
         <div>
         </div>
     </div>
+</div>
 
 
 
 
-
-    <!--
-    <h2>Index</h2>
-    <p>
-        Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th></th>
-        </tr>
-        foreach (var item in Model) {
-        <tr>
-            <td>
-                Denne må fikses for å få den til å virke
-                Html.ActionLink("Detaljer", "Detaljer", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-        }
-    </table>
-     -->
+<!--
+<h2>Index</h2>
+<p>
+    Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+    foreach (var item in Model) {
+    <tr>
+        <td>
+            Denne må fikses for å få den til å virke
+            Html.ActionLink("Detaljer", "Detaljer", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+    }
+</table>
+ -->

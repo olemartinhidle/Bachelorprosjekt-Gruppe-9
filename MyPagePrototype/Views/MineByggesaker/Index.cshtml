@@ -1,12 +1,15 @@
 ﻿@model IEnumerable<MyPagePrototype.Models.Byggesaker>
-
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@section Styles {
+    <link href="@Url.Content("~/Content/MineByggesaker.css")" rel="stylesheet" type="text/css" />
+}
 <br />
-<div class="top-inf-txt">
+
+<div class="content-container-60">
     <div class="holder">
         <div class="out-loc">
             Innboks /
@@ -15,209 +18,67 @@
             </div>
         </div>
     </div>
+    <br /> <br />
 
-    <br />
-    <br />
-        <h2 class="mi-bygg">Mine byggesaker</h2>
-        <p>Her vil du se en oversikt over din(e) byggesaker.</p>
+    <h2 class="mi-bygg">Mine byggesaker</h2>
+    <p>Her vil du se en oversikt over din(e) byggesaker.</p>
     <div>
         <form action="/MineByggesaker/RegistrerSak" method="get">
             <button class="bygg-btn" name="subject" type="submit">Registrer din byggesak</button>
         </form>
     </div>
-</div>
 <br />
 <br />
 
-<style>
-
-    .mi-bygg {
-        font-family: Archivo;
-    }
-
-    .p {
-        font-family: Archivo;
-    }
-
-    .top-inf-txt {
-        font-family: Archivo;
-    }
-
-    .holder {
-        font-family: Archivo;
-        display: inline;
-    }
-
-    .out-loc {
-        font-family: Archivo;
-        display: inline;
-    }
-
-    .in-loc {
-        font-family: Archivo;
-        display: inline;
-        color: blue
-    }
-
-    .bygg-btn {
-        background-color: darkblue;
-        border-radius: 10px;
-        border: 1px solid;
-        color: white;
-        font-family: Archivo;
-        font-weight: Bold;
-        font-size: 20px;
-        opacity: 1;
-    }
-
-    .sakboks-box-btn {
-        font-family: Archivo;
-        border: 1px solid;
-        color: darkgray;
-        width: 100%;
-        padding: 10px;
-        height: 100px;
-        box-shadow: 2px 5px;
-        background-color: white;
-        margin-bottom: 16px;
-    }
-
-    .sakboks-box {
-        font-family: Archivo;
-        text-align: left;
-        width: 100%;
-        padding: 10px;
-        height: 80px;
-        margin: auto;
-        opacity: 1;
-    }
-
-    .sakboks-txt {
-        font-family: Archivo;
-        text-align: left;
-        display: inline;
-        font-size: larger;
-        font-weight: bold;
-        color: black;
-    }
-
-    .saksboks-status-ib {
-        font-family: Archivo;
-        font-weight: bold;
-        border-radius: 10px;
-        font-size: small;
-        background-color: rgba(255, 0, 0, 0.59);
-        float: right;
-        color: black;
-        padding: 2px;
-        border: 1px solid;
-    }
-
-    .saksboks-status-ub {
-        font-family: Archivo;
-        border-radius: 10px;
-        font-size: small;
-        background-color: coral;
-        float: right;
-        color: black;
-        padding: 2px;
-        border: 1px solid;
-    }
-
-    .saksboks-status-fb {
-        font-family: Archivo;
-        border-radius: 10px;
-        font-size: small;
-        background-color: forestgreen;
-        float: right;
-        color: black;
-        padding: 2px;
-        border: 1px solid;
-    }
-
-    .sakboks-arrow {
-        font-family: Archivo;
-        float: right;
-        margin-top: 6px;
-        border: solid black;
-        border-width: 0 2px 2px 0;
-        padding: 5px;
-        transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-    }
-
-    .saksboks-dato {
-        font-family: Archivo;
-        color: black;
-    }
-</style>
-
-<div class="content-container">
-<button class="sakboks-box-btn" onclick="window.location.href='Oppsummering'">
-    <div class="sakboks-box">
-        <div class="sakboks-txt">
-            Uregistrert revet bygg.
-        </div>
-        <div class="sakboks-arrow">
-        </div>
-        <div class="saksboks-status-ib">
-            Ubehandlet
-        </div>
-        <div class="saksboks-dato">
-            22.10.2022
-        </div>
-    </div>
-</button>
-<br />
-
-<button class="sakboks-box-btn">
-    <div class="sakboks-box">
-        <div class="sakboks-txt">
-            Uregistrert revet bygg.
+    <button class="sakboks-box-btn" onclick="window.location.href='/MineByggesaker/OppIB'">
+        <div class="sakboks-box">
+            <div class="sakboks-txt">
+                Uregistrert revet bygg.
+            </div>
             <div class="sakboks-arrow">
             </div>
-            <div class="saksboks-status-ub">
-                Under behandling
+            <div class="saksboks-status-ib">
+                Ubehandlet
+            </div>
+            <div class="saksboks-dato">
+                22.10.2022
             </div>
         </div>
-        <div class="saksboks-dato">
-            22.10.2022
-        </div>
-    </div>
-</button>
-<br />
+    </button>
+    <br />
 
-<button class="sakboks-box-btn">
-    <div class="sakboks-box">
-        <div class="sakboks-txt">
-            Uregistrert revet bygg.
-            <div class="sakboks-arrow">
+    <button class="sakboks-box-btn" onclick="window.location.href='/Minebyggesaker/OppUB'">
+        <div class="sakboks-box">
+            <div class="sakboks-txt">
+                Uregistrert revet bygg.
+                <div class="sakboks-arrow">
+                </div>
+                <div class="saksboks-status-ub">
+                    Under behandling
+                </div>
             </div>
-            <div class="saksboks-status-fb">
-                Ferdig behandlet
+            <div class="saksboks-dato">
+                22.10.2022
             </div>
         </div>
-        <div class="saksboks-dato">
-            22.10.2022
+    </button>
+    <br />
+
+    <button class="sakboks-box-btn" onclick="window.location.href='/MineByggesaker/OppFB'">
+        <div class="sakboks-box">
+            <div class="sakboks-txt">
+                Uregistrert revet bygg.
+                <div class="sakboks-arrow">
+                </div>
+                <div class="saksboks-status-fb">
+                    Ferdig behandlet
+                </div>
+            </div>
+            <div class="saksboks-dato">
+                22.10.2022
+            </div>
         </div>
-    </div>
-</button>
+    </button>
 </div>
 <br />
 
-<!--
-<table class="table">
-    <tr>
-        <th></th>
-    </tr>
-
-    foreach (var item in Model)
-    {
-<tr>
-    <td>
-        item.byggesaker;
-    </td>
-</tr>
-    }
-</table>
--->
