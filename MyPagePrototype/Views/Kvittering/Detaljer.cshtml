@@ -1,0 +1,145 @@
+﻿@model MyPagePrototype.Models.Kvittering
+
+
+@{
+    ViewBag.Title = "Detaljer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Oppsummering.css")" rel="stylesheet" type="text/css" />
+}
+
+
+<br />
+<div class="content-container-60-opp">
+    <h2>Din innsending er vellykket!</h2>
+    <br />
+    <h5>Din innsending vil bli behandlet så fort som mulig</h5>
+
+    @if (ViewBag.Status == "ib")
+    {
+        @:<div class="saksboks-status-ib-opp"> Ubehandlet </div>
+    }
+
+    @if ((ViewBag.Status == "ub"))
+    {@:<div class="saksboks-status-ub-opp"> Under behandling </div>
+    }
+
+    @if ((ViewBag.Status == "fb"))
+    {
+        @:<div class="saksboks-status-fb-opp"> Ferdig behandlet </div>
+    }
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <style>
+
+        .graa-boks-kvitt {
+            background-color: #f8f7f7;
+            border: 1px solid;
+            color: darkgray;
+        }
+
+        .tekst-boks-kvitt {
+            color: black;
+        }
+
+        .inf-kvitt {
+            margin-top: 5%;
+            margin-left: 3%;
+            margin-bottom: 3%;
+        }
+
+        .matrikkel-bilde {
+            height: 300px;
+            width: 300px;
+            float: right;
+            margin-right: 15.3%;
+        }
+
+        .orto-bilde {
+            height: 250px;
+            width: 400px;
+            float: right;
+            margin-right: 5%;
+        }
+
+        .head-inf {
+            display: inline;
+        }
+
+        .head-felt {
+            display: inline;
+        }
+    </style>
+    <div class="graa-boks-kvitt">
+        <div class="tekst-boks-kvitt">
+            <div class="inf-kvitt">
+
+                <h3>Kvittering</h3>
+                <div class="head-inf">
+
+                    Dato: @Html.DisplayFor(model => model.KvitteringsDato)
+                    <img class="matrikkel-bilde" src="@Html.DisplayFor(model => model.MatrikkelPath)">
+                </div>
+                <br />
+                <div class="kont-inf">
+                    <br />
+                    <h5>Innmelders navn</h5>
+                    @Html.DisplayFor(model => model.KontaktInfo.Navn)
+                    <br />
+                    <br />
+                    <h5>Telefonnummer</h5>
+
+                    @Html.DisplayFor(model => model.KontaktInfo.Telefonnummer)
+                    <br /><br />
+
+                    <h5>Epost</h5>
+                    @Html.DisplayFor(model => model.KontaktInfo.Epost)
+                </div>
+                <div class="bygg-inf">
+                    <br />
+                    <div class="head-felt">
+
+                        <h5>Tema</h5>
+                        @Html.DisplayFor(model => model.Byggesak.ByggesakTema)
+                        <img class="orto-bilde" src="@Html.DisplayFor(model => model.OrtoPath)">
+                    </div>
+                    <br /><br />
+                    <h5>Felt</h5>
+                    @Html.DisplayFor(model => model.Byggesak.ByggesakTittel)
+                    <br />
+                    <br /><br />
+                    <h5>Kommentar</h5>
+                    @Html.DisplayFor(model => model.Kommentar)
+                    <br />
+                    <br /><br />
+                    <h5>Nytt areal (m²)</h5>
+                    @Html.DisplayFor(model => model.Byggesak.NyttAreal)
+                    <br /><br />
+                    <h5>Ny høyde (m²)</h5>
+                    @Html.DisplayFor(model => model.Byggesak.NyHøyde)
+                    <br /><br />
+                    <h5>Ditt byggningsnummer</h5>
+                    @Html.DisplayFor(model => model.Byggesak.ByggningsNummer)
+                    <br /><br />
+                    <br /><br />
+                    <h5>Vedlegg</h5>
+                    @Html.DisplayFor(model => model.Vedlegg)
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</div>

@@ -24,7 +24,7 @@
                     <div class="align-self-center">
                         <div class="user-name">
                             <i class="fas fa-user" aria-hidden="true"> </i>
-                            <span class="capitalFirstLetter">hidle ole m sleveland</span>
+                            <span class="capitalFirstLetter">Normann Ola Svensen </span>
                         </div>
                     </div><div class="align-self-center logout">
                         <a href="/logout" class="logout-link nav-link">Logg ut</a>
@@ -35,39 +35,49 @@
         </div>
     </div>
 
-    @if ((ViewBag.Title == "Oppsummering") || (ViewBag.Title == "RegistrerSak") || (ViewBag.Title == "KontaktSkjema"))
+    @if ((ViewBag.Title == "Oppsummering") || (ViewBag.Title == "RegistrerSak") || (ViewBag.Title == "KontaktSkjema") || (ViewBag.Title == "Detaljer"))
     {
         @:<div class="nav-bar-sum">
-            @:<button class="nav-btn-1" onclick="history.back()">Tilbake</button>
+            if (ViewBag.Title != "Detaljer")
+            {
+                @:<button class="nav-btn-1" onclick="history.back()">Tilbake</button>
+            }
             @:<div class="txt-nav-cont">
-        if (ViewBag.Title == "RegistrerSak")
-        {
-            @:<div class="current-site">1. Registrer melding</div>
-        }
-        if (ViewBag.Title != "RegistrerSak")
-        {
-            @:<div class="site-1">1. Registrer melding</div>
-        }
-            @:<div class="crock"> > </div>
-        if (ViewBag.Title == "KontaktSkjema")
-        {
-            @:<div class="current-site">2. Kontaktinformasjon</div>
-        }
-        if (ViewBag.Title != "KontaktSkjema")
-        {
-            @:<div class="site-2">2. Kontaktinformasjon</div>
-        }
-            @:<div class="crock"> > </div>
-        if (ViewBag.Title == "Oppsummering")
-        {
-            @:<div class="current-site">4. Oppsummering for innsending</div>
-        }
-        if (ViewBag.Title != "Oppsummering")
-        {
-            @:<div class="site-1">4. Oppsummering for innsending</div>
-        }    
+                if (ViewBag.Title == "RegistrerSak")
+                {
+                    @:<div class="current-site">1. Registrer melding</div>
+                }
+                if (ViewBag.Title != "RegistrerSak")
+                {
+                    @:<div class="site-1">1. Registrer melding</div>
+                }
+                @:<div class="crock"> > </div>
+                if (ViewBag.Title == "KontaktSkjema")
+                {
+                    @:<div class="current-site">2. Kontaktinformasjon</div>
+                }
+                if (ViewBag.Title != "KontaktSkjema")
+                {
+                    @:<div class="site-2">2. Kontaktinformasjon</div>
+                }
+                @:<div class="crock"> > </div>
+                if (ViewBag.Title == "Detaljer")
+                {
+                    @:<div class="current-site">3. Oppsummering for innsending</div>
+                }
+                if (ViewBag.Title != "Detaljer")
+                {
+                    @:<div class="site-1">3. Oppsummering</div>
+                }
             @:</div>
-            @:<button class="nav-btn-2" onclick="window.location.href='Index'">Mine byggesaker</button>
+            if (ViewBag.Title != "Detaljer")
+            {
+                @:<button class="nav-btn-2" onclick="window.location.href='Index'">Mine byggesaker</button>
+            }
+            else
+            {
+                @:<button class="nav-btn-2" onclick="window.location.href='../../MineByggesaker/Index'">Mine byggesaker</button>
+            }
         @:</div>
     }
 

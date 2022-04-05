@@ -15,20 +15,20 @@ namespace MyPagePrototype.Controllers
         }
 
         // GET: Profil/Details/5
-        public ActionResult Detaljer(int id)
+        public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Profil/Create
-        public ActionResult RegistrerProfil()
+        public ActionResult Create()
         {
             return View();
         }
 
         // POST: Profil/Create
         [HttpPost]
-        public ActionResult RegistrerProfil(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
@@ -43,14 +43,14 @@ namespace MyPagePrototype.Controllers
         }
 
         // GET: Profil/Edit/5
-        public ActionResult RedigerProfil(int id)
+        public ActionResult Edit(int id)
         {
             return View();
         }
 
         // POST: Profil/Edit/5
         [HttpPost]
-        public ActionResult RedigerProfil(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
@@ -65,14 +65,14 @@ namespace MyPagePrototype.Controllers
         }
 
         // GET: Profil/Delete/5
-        public ActionResult SlettProfil(int id)
+        public ActionResult Delete(int id)
         {
             return View();
         }
 
         // POST: Profil/Delete/5
         [HttpPost]
-        public ActionResult SlettProfil(int id, FormCollection collection)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {

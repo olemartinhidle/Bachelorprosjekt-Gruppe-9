@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyPagePrototype.DAL;
 using MyPagePrototype.Models;
 
 namespace MyPagePrototype.Controllers
@@ -10,19 +11,20 @@ namespace MyPagePrototype.Controllers
     public class MineByggesakerController : Controller
     {
 
-
+        private MinSideContext db = new MinSideContext();
 
         // GET: Byggesaker
         public ActionResult Index()
         {
 
-            Sak sak = new Sak(1, "Eier", "10.12.2020", "Test", "Dette er en test", "Nei takk");
 
-            var model = sak.byggesaker.ToList();
 
-            /* Tror vi trenger en Ienum ,, er nok enklere å bare implimentere entity framework */
-            return View(model);
-            
+
+            //var kvitteringer = db.Byggesaker.Include(k => k.Byggesak);
+
+
+            return View(db.Byggesaker.ToList().OrderByDescending(x => x.ByggesakDato));
+
 
         }
 
@@ -61,25 +63,45 @@ namespace MyPagePrototype.Controllers
 
 
         // GET: Byggesaker/Create
-        public ActionResult RegistrerSak()
+        public ActionResult Registrer()
         {
+            ViewBag.ByggesakID = new SelectList(db.Kvitteringer, "KvitteringID", "Kommentar");
             return View();
         }
 
         // POST: Byggesaker/Create
         [HttpPost]
-        public ActionResult RegistrerSak(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Registrer([Bind(Include = "ByggesakID,ByggesakTema,TypeBygg,ByggningsNummer,ByggesakTittel,ByggesakDato,ByggesakStatus,NæringsGruppe,NyttAreal,NyHøyde,KvitteringID")] Byggesak byggesak)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+               
+                db.Byggesaker.Add(byggesak);
+                db.SaveChanges();
 
-                return RedirectToAction("KontaktSkjema");
+
+                var bruktID = new List<int>();
+
+                foreach (var item in db.Byggesaker)
+                {
+                    bruktID.Add(item.ByggesakID);
+                }
+
+                int maxid = bruktID.Max();
+
+                byggesak.ByggesakID = maxid;
+
+                TempData["tempID"] = byggesak.ByggesakID;
+
+
+                //return RedirectToAction("/../Byggesaks/Index");
+
+                return RedirectToAction("/../KontaktInfo/Send");
             }
-            catch
-            {
-                return View();
-            }
+
+            ViewBag.ByggesakID = new SelectList(db.Kvitteringer, "KvitteringID", "Kommentar", byggesak.ByggesakID);
+            return View(byggesak);
         }
 
         // GET: Byggesaker/Edit/5
@@ -133,18 +155,17 @@ namespace MyPagePrototype.Controllers
 
         // POST: Byggesaker/Create
         [HttpPost]
-        public ActionResult KontaktSkjema(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult KontaktSkjema([Bind(Include = "ID,Navn,Telefonnummer,Epost,MailØnsket,Samtykke")] KontaktInfo kontaktInfo)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                db.KontaktInfo.Add(kontaktInfo);
+                db.SaveChanges();
+                return RedirectToAction("OppIB");
+            }
 
-                return RedirectToAction("Oppsummering");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(kontaktInfo);
         }
     }
 

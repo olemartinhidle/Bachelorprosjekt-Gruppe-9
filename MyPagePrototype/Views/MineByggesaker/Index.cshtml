@@ -1,13 +1,13 @@
-﻿@model IEnumerable<MyPagePrototype.Models.Byggesaker>
+﻿@model IEnumerable<MyPagePrototype.Models.Byggesak>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section Styles {
     <link href="@Url.Content("~/Content/MineByggesaker.css")" rel="stylesheet" type="text/css" />
 }
 <br />
+
 
 <div class="content-container-60">
     <div class="holder">
@@ -21,64 +21,73 @@
     <br /> <br />
 
     <h2 class="mi-bygg">Mine byggesaker</h2>
-    <p>Her vil du se en oversikt over din(e) byggesaker.</p>
+    <p>Her vil du se en oversikt over din(e) byggesaker</p>
     <div>
-        <form action="/MineByggesaker/RegistrerSak" method="get">
+        <form action="/MineByggesaker/Registrer" method="get">
             <button class="bygg-btn" name="subject" type="submit">Registrer din byggesak</button>
         </form>
     </div>
-<br />
-<br />
-
-    <button class="sakboks-box-btn" onclick="window.location.href='/MineByggesaker/OppIB'">
-        <div class="sakboks-box">
-            <div class="sakboks-txt">
-                Uregistrert revet bygg.
-            </div>
-            <div class="sakboks-arrow">
-            </div>
-            <div class="saksboks-status-ib">
-                Ubehandlet
-            </div>
-            <div class="saksboks-dato">
-                22.10.2022
-            </div>
-        </div>
-    </button>
+    <br />
     <br />
 
-    <button class="sakboks-box-btn" onclick="window.location.href='/Minebyggesaker/OppUB'">
-        <div class="sakboks-box">
-            <div class="sakboks-txt">
-                Uregistrert revet bygg.
-                <div class="sakboks-arrow">
-                </div>
-                <div class="saksboks-status-ub">
-                    Under behandling
-                </div>
-            </div>
-            <div class="saksboks-dato">
-                22.10.2022
-            </div>
-        </div>
-    </button>
-    <br />
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
 
-    <button class="sakboks-box-btn" onclick="window.location.href='/MineByggesaker/OppFB'">
-        <div class="sakboks-box">
-            <div class="sakboks-txt">
-                Uregistrert revet bygg.
-                <div class="sakboks-arrow">
-                </div>
-                <div class="saksboks-status-fb">
-                    Ferdig behandlet
-                </div>
-            </div>
-            <div class="saksboks-dato">
-                22.10.2022
-            </div>
-        </div>
-    </button>
-</div>
+                //@item.ByggesakID;
+
+                @:<button class="sakboks-box-btn" onclick="window.location.href='@Url.Action("Detaljer", "Kvittering", new { id = item.KvitteringID })'">
+                    @:<div class="sakboks-box">
+                        @:<div class="sakboks-txt">
+                            @item.ByggesakTittel;
+                            @:<div class="sakboks-arrow">
+                            @:</div>
+                            if (item.ByggesakStatus == "Ubehandlet")
+                            {
+                                @:<div class="saksboks-status-ib">
+                                    @item.ByggesakStatus;
+                                @:</div>
+                            }
+                            if (item.ByggesakStatus == "Under behandling")
+                            {
+                                @:<div class="saksboks-status-ub">
+                                    @item.ByggesakStatus;
+                                @:</div>
+                            }
+                            if (item.ByggesakStatus == "Ferdig behandlet")
+                            {
+                                @:<div class="saksboks-status-fb">
+                                    @item.ByggesakStatus;
+                                @:</div>
+                            }
+                        @:</div>
+                        @:<div class="saksboks-dato">
+
+
+                            string stringDato = item.ByggesakDato.ToString();
+
+                            stringDato = stringDato.Remove(10, 9);
+
+                            @stringDato;
+
+                        @:</div>
+                    @:</div>
+                @:</button>
+            }
+        }
+        else
+        {
+            @:<h4>Ingen registrerte byggesaker</h4>
+        }
+    @:</div>
+}
+
 <br />
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

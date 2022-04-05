@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MyPagePrototype.Models.Bruker>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Navn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefonnummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Epost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailØnsket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Samtykke)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Navn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefonnummer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Epost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailØnsket)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Samtykke)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BrukerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BrukerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BrukerID })
+        </td>
+    </tr>
+}
+
+</table>
