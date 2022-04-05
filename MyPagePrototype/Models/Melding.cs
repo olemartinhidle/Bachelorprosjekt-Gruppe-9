@@ -2,36 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyPagePrototype.Models
 {
-    public class Melding : Innboks
+    
+    public class Melding
     {
+        /* Felt */
+      
 
-        public int meldingsID { get; set; }
+        /* Prop, gettere og settere */
+        
+        public int MeldingID { get; set; }
 
-        public String meldingsNavn { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        [DataType(DataType.Date)]
+        public DateTime MeldingDato { get; set; }
+        public string MeldingTittel { get; set; } 
+        public string MeldingAvsender { get; set; }
+        public string MeldingFilPath { get; set; }
 
 
-        public String status { get; set; }
-
-
-        public  String fil { get; set; }
-
-        public Melding()
-        {
-            meldingsID = 0;
-            meldingsNavn = "Byggesak";
-            status = "Under behandling";
-            fil = "dette/er/en/path/";
-
-        }
-
-        public int CompareTo(Melding other)
-        {
-            throw new NotImplementedException();
-        }
+        public virtual ICollection<Innboks> Innboks { get; set; }
     }
-
 
 }

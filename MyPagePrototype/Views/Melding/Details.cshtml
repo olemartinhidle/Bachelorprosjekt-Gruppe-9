@@ -1,0 +1,51 @@
+﻿@model MyPagePrototype.Models.Melding
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Melding</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MeldingDato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeldingDato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeldingTittel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeldingTittel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeldingAvsender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeldingAvsender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeldingFilPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeldingFilPath)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MeldingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,5 +1,4 @@
-﻿@model MyPagePrototype.Models.Sak
-
+﻿@model MyPagePrototype.Models.Byggesak
 @{
     ViewBag.Title = "RegistrerSak";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,69 +8,76 @@
     <link href="@Url.Content("~/Content/Registrersak.css")" rel="stylesheet" type="text/css" />
 }
 
-
 @using (Html.BeginForm())
+
 {
     @Html.AntiForgeryToken()
-
     <div class="content-container-60">
         <br />
         <h3>Registrer din byggesak</h3>
         <p>Vennligst skriv inn riktige detaljer og trykk bekreft</p>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
-            <label>Velg tema</label><br />
-            <select class="drop-field" name="Tema" id="tema">
+            <label>Velg tema</label>
+            <br />
+            <select class="drop-field" name="ByggesakTema" id="ByggesakTema">
                 <option value="Byggesak">Byggesak</option>
                 <option value="Placeholder">Placeholder</option>
             </select>
         </div>
+
         <br />
+
         <div class="form-group">
             <label>Type bygg</label> <br />
-            <select class="drop-field" name="TypeBygg" id="typebygg">
+            <select class="drop-field" name="TypeBygg" id="TypeBygg">
                 <option>Uregistrert bygg</option>
                 <option>Revet bygg</option>
                 <option>Tilbygg</option>
             </select>
         </div>
+
         <br />
+
         <div class="form-group">
             <label>Bygningsnummer</label>
-
-            <input class="input-field" type="text" id="byggnr">
-
+            <input class="input-field" type="number" id="ByggningsNummer" name="ByggningsNummer">
         </div>
+
         <br />
+
         <div class="form-group">
             <label>Status</label>
-
-            <input class="input-field" type="text" id="status" name="status">
-
+            <input class="input-field" type="text" id="ByggesakStatus" name="ByggesakStatus" value="Ubehandlet">
         </div>
+
         <br />
+
         <div class="form-group">
             <label>Næringsgruppe</label>
-
-            <select class="drop-field" name="gruppe" id="gruppe">
+            <select class="drop-field" name="NæringsGruppe" id="NæringsGruppe">
                 <option value="Bolig">Bolig</option>
                 <option value="Næringsbygg">Næringsbygg</option>
             </select>
+        </div>
+
+        <br />
+
+        <div class="form-group-bunn">
+            <label class="l-areal">Nytt areal (m²)</label> <label>Ny høyde (m²)</label> <br />
+            <input class="i-areal" type="number" name="NyttAreal" id="NyttAreal" required>
+
+            <input class="ny-høyde" type="number" name="NyHøyde" id="NyHøyde" required>
 
         </div>
-        <br />
-        <div class="form-group-bunn">
-            <label class="l-areal">Nytt areal</label> <label>Ny høyde</label> <br />
-            <input class="i-areal" name="nyttareal" id="nyttareal">
-            <input class="ny-høyde" name="nyhøyde" id="nyhøyde">
-        </div>
+
         <br />
         <br />
 
         <div class="form-group">
             <div>
-                <input type="submit" value="Bekreft" class="btn-bekreft" />
+                <input type="submit" value="Registrer" class="btn-bekreft" />
             </div>
         </div>
     </div>

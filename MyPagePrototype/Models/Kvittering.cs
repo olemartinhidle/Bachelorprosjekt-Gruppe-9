@@ -1,39 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyPagePrototype.Models
 {
     public class Kvittering
     {
-
-        public int kvitteringsNr { get; set; }
-
-        public int dato { get; set; }
-
-        public String personNavn { get; set; }
-
-        public String telefonnummer { get; set; }
-
-        public Object flyfoto { get; set; } 
-
-        public Object kartBilde { get; set; }
-
-        public  String epost { get; set; }
-
-        public int Status { get; set; }
-
-        public String tema { get; set; }
-
-        public String kommentar { get; set; }
-
-        public Object vedlegg { get; set; }
-
-
-        public Kvittering() {
         
-        }
+        public int KvitteringID { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        public DateTime KvitteringsDato { get; set; }
+        public string Kommentar { get; set; }
+        public string Vedlegg { get; set; }
+        public string MatrikkelPath { get; set; }
+        public string OrtoPath { get; set; }
+
+        
+        public int ByggesakID { get; set; }
+        
+        public int KontaktInfoID { get; set; }
+
+        
+        
+        public virtual Byggesak Byggesak { get; set; }
+        
+        public virtual KontaktInfo KontaktInfo { get; set; }
 
     }
 
