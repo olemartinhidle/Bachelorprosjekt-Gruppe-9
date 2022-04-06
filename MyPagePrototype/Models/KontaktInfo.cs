@@ -14,6 +14,8 @@ namespace MyPagePrototype.Models
         public string Telefonnummer { get; set; }
         public string Epost { get; set; }
         public bool MailØnsket { get; set; }
+
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Må markeres*")]
         public bool Samtykke { get; set; }
         public int BrukerID { get; set; }
         
