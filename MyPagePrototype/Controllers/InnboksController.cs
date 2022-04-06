@@ -20,8 +20,7 @@ namespace MyPagePrototype.Controllers
         {
             string id = Session["brukerID"].ToString();
 
-            int brukerID;
-            Int32.TryParse(id, out brukerID);
+            Int32.TryParse(id, out int brukerID);
 
             var meldinger = db.Meldinger.Where(m => m.BrukerID == brukerID);
             return View(meldinger.ToList());

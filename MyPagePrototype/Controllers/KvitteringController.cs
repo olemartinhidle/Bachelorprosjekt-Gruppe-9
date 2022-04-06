@@ -26,19 +26,17 @@ namespace MyPagePrototype.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
 
-        public ActionResult genKvittering()
+        public ActionResult GenKvittering()
         {
 
 
             if (TempData["tempID"] != null || TempData["kontID"] != null)
             {
-                int byggID;
-                int kontID;
                 string byggesakID = TempData["tempID"].ToString();
                 string kontaktID = TempData["kontID"].ToString();
 
-                Int32.TryParse(byggesakID, out byggID);
-                Int32.TryParse(kontaktID, out kontID);
+                Int32.TryParse(byggesakID, out int byggID);
+                Int32.TryParse(kontaktID, out int kontID);
 
                 
                 var bruktID = new List<int>();
@@ -79,10 +77,7 @@ namespace MyPagePrototype.Controllers
 
                 db.Kvitteringer.Add(kvitt);
                 db.SaveChanges();
-
-
-
-                //return RedirectToAction("/../Kvitterings/Index");
+               
                 return RedirectToAction("/../Kvittering/Detaljer/" + KvittID);
 
             }
@@ -99,18 +94,12 @@ namespace MyPagePrototype.Controllers
             }
             Kvittering kvittering = db.Kvitteringer.Find(id);
 
-
-            //var kvittering = db.Kvitteringer.Include(k => k.Byggesak).Include(k => k.KontaktInfo);
-
-
             if (kvittering == null)
             {
                 return HttpNotFound();
             }
 
-
             int sakID = kvittering.ByggesakID;
-
 
             Byggesak byggesak = db.Byggesaker.Find(sakID);
 
@@ -125,21 +114,10 @@ namespace MyPagePrototype.Controllers
             if (byggesak.ByggesakStatus == "Ferdig behandlet")
             {
                 ViewBag.Status = "fb";
-            }
-
-            //var liste = db.Kvitteringer.Include(b => b.Byggesak).Include(k => k.KontaktInfo).Where(b => b.ByggesakID == sakID).Where(k => k.KontaktInfoID == id).ToList();
+            }           
 
             return View(kvittering);
         }
-        /*
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-        */
+        
     }
 }

@@ -65,16 +65,12 @@ namespace MyPagePrototype.Controllers
 
                 string id = Session["brukerID"].ToString();
 
-                int brukerID;
-                Int32.TryParse(id, out brukerID);
+                Int32.TryParse(id, out int brukerID);
 
                 kontaktInfo.BrukerID = brukerID;
 
-                //var byggID = TempData["tempID"];
                 db.KontaktInfo.Add(kontaktInfo);
                 db.SaveChanges();
-
-                //return RedirectToAction("/../KontaktInfo/Index");
 
                 var bruktID = new List<int>();
 
@@ -89,9 +85,7 @@ namespace MyPagePrototype.Controllers
             
                 TempData["kontID"] = kontaktInfo.KontaktInfoID;
 
-
-                //return View(kontaktInfo);
-                return RedirectToAction("/../Kvittering/genKvittering");
+                return RedirectToAction("/../Kvittering/GenKvittering");
             }
 
             return View(kontaktInfo);
@@ -154,16 +148,5 @@ namespace MyPagePrototype.Controllers
             return RedirectToAction("Index");
         }
 
-
-        /*
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-        */
     }
 }

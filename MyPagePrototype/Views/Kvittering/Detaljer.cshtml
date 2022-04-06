@@ -5,11 +5,11 @@
     ViewBag.Title = "Detaljer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@section Styles {
-    <link href="@Url.Content("~/Content/Oppsummering.css")" rel="stylesheet" type="text/css" />
-}
-
+<head>
+    @section Styles {
+        <link href="@Url.Content("~/Content/Oppsummering.css")" rel="stylesheet" type="text/css" />
+    }
+</head>
 
 <br />
 <div class="content-container-60-opp">
@@ -35,47 +35,6 @@
     <br />
     <br />
     <br />
-
-    <style>
-
-        .graa-boks-kvitt {
-            background-color: #f8f7f7;
-            border: 1px solid;
-            color: darkgray;
-        }
-
-        .tekst-boks-kvitt {
-            color: black;
-        }
-
-        .inf-kvitt {
-            margin-top: 5%;
-            margin-left: 3%;
-            margin-bottom: 3%;
-        }
-
-        .matrikkel-bilde {
-            height: 31%;
-            width: 31%;
-            float: right;
-            margin-right: 15.3%;
-        }
-
-        .orto-bilde {
-            height: 20%;
-            width: 41.5%;
-            float: right;
-            margin-right: 5%;
-        }
-
-        .head-inf {
-            display: inline;
-        }
-
-        .head-felt {
-            display: inline;
-        }
-    </style>
 
     <div class="graa-boks-kvitt">
         <div class="tekst-boks-kvitt">
@@ -135,9 +94,6 @@
                 </div>
 
             </div>
-
-
-
         </div>
     </div>
 

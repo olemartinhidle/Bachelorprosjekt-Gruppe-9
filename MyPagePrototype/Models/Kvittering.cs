@@ -10,7 +10,6 @@ namespace MyPagePrototype.Models
 {
     public class Kvittering
     {
-        
         public int KvitteringID { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
@@ -19,16 +18,11 @@ namespace MyPagePrototype.Models
         public string Vedlegg { get; set; }
         public string MatrikkelPath { get; set; }
         public string OrtoPath { get; set; }
-
-        
         public int ByggesakID { get; set; }
-        
         public int KontaktInfoID { get; set; }
 
-        
-        
+                
         public virtual Byggesak Byggesak { get; set; }
-        
         public virtual KontaktInfo KontaktInfo { get; set; }
 
     }

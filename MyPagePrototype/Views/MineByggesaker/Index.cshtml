@@ -8,7 +8,6 @@
 }
 <br />
 
-
 <div class="content-container-60">
     <div class="holder">
         <div class="out-loc">
@@ -29,15 +28,24 @@
     </div>
     <br />
     <br />
-
     @{
         if (Model != null)
         {
             foreach (var item in Model)
             {
 
-                //@item.ByggesakID;
-
+                int? id = item.KvitteringID;
+                if (id == null || id == 0)
+                {
+                    TempData["bid"] = item.BrukerID;
+                    <script>
+                        function redirect() {
+                            window.location.href = "/MineByggesaker/FjernEndring";
+                        }
+                        setTimeout(redirect, 1); // Tall i millisekund
+                    </script>
+                }
+                
                 @:<button class="sakboks-box-btn" onclick="window.location.href='@Url.Action("Detaljer", "Kvittering", new { id = item.KvitteringID })'">
                     @:<div class="sakboks-box">
                         @:<div class="sakboks-txt">
@@ -65,7 +73,6 @@
                         @:</div>
                         @:<div class="saksboks-dato">
 
-
                             string stringDato = item.ByggesakDato.ToString();
 
                             stringDato = stringDato.Remove(10, 9);
@@ -84,10 +91,6 @@
     @:</div>
 }
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<br /><br /><br />
+<br /><br /><br />
 <br />

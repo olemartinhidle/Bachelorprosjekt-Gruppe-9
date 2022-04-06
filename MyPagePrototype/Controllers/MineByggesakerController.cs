@@ -19,14 +19,9 @@ namespace MyPagePrototype.Controllers
 
             string id = Session["brukerID"].ToString();
 
-            int brukerID;
-            Int32.TryParse(id, out brukerID);
+            Int32.TryParse(id, out int brukerID);
 
             var byggesaker = db.Byggesaker.Where(m => m.BrukerID == brukerID);
-
-
-            //var kvitteringer = db.Byggesaker.Include(k => k.Byggesak);
-
 
             return View(byggesaker.ToList().OrderByDescending(x => x.ByggesakDato));
 
@@ -84,8 +79,8 @@ namespace MyPagePrototype.Controllers
 
                 string id = Session["brukerID"].ToString();
 
-                int brukerID;
-                Int32.TryParse(id, out brukerID);
+                
+                Int32.TryParse(id, out int brukerID);
 
                 byggesak.BrukerID = brukerID;
 
@@ -105,10 +100,7 @@ namespace MyPagePrototype.Controllers
 
                 byggesak.ByggesakID = maxid;
 
-                TempData["tempID"] = byggesak.ByggesakID;
-
-
-                //return RedirectToAction("/../Byggesaks/Index");
+                TempData["tempID"] = byggesak.ByggesakID;               
 
                 return RedirectToAction("/../KontaktInfo/Send");
             }
@@ -117,49 +109,7 @@ namespace MyPagePrototype.Controllers
             return View(byggesak);
         }
 
-        // GET: Byggesaker/Edit/5
-        public ActionResult OppdaterSak(int id)
-        {
-            return View();
-        }
 
-        // POST: Byggesaker/Edit/5
-        [HttpPost]
-        public ActionResult OppdaterSak(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Byggesaker/Delete/5
-        public ActionResult SlettSak(int id)
-        {
-            return View();
-        }
-
-        // POST: Byggesaker/Delete/5
-        [HttpPost]
-        public ActionResult SlettSak(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
         // GET: Byggesaker/Create
         public ActionResult KontaktSkjema()
         {
@@ -179,6 +129,17 @@ namespace MyPagePrototype.Controllers
             }
 
             return View(kontaktInfo);
+        }
+
+        public ActionResult FjernEndring()
+        {
+            int bid =Int32.Parse(TempData["bid"].ToString());
+
+            var sak = db.Byggesaker.Find(bid);
+            db.Byggesaker.Remove(sak);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 
