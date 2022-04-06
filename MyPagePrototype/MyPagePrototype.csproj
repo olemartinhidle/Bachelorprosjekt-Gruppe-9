@@ -195,13 +195,9 @@
     <Content Include="Views\Profil\Index.cshtml" />
     <Content Include="Views\Innboks\Index.cshtml" />
     <Content Include="Views\MineByggesaker\Index.cshtml" />
-    <Content Include="Views\MineByggesaker\Kvittering.cshtml" />
     <Content Include="Views\MineByggesaker\Oppsummering.cshtml" />
-    <Content Include="Views\Innboks\Liste.cshtml" />
     <Content Include="Views\KontaktInfo\Send.cshtml" />
-    <Content Include="Views\KontaktInfo\Details.cshtml" />
     <Content Include="Views\KontaktInfo\Index.cshtml" />
-    <Content Include="Views\Kvittering\Create.cshtml" />
     <Content Include="Views\Kvittering\Detaljer.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -55,35 +55,10 @@ namespace MyPagePrototype.DAL
             bruker.HasMany(o => o.KontaktInfo);
             bruker.HasMany(m => m.Byggesaker);
             bruker.HasMany(m => m.Meldinger);
-            bruker.HasKey(k => k.BrukerID);
-            
-
-
-
-
-
-
-
-
-
-
-            /*
-                        .HasRequired(s => s.Byggesak)
-                        .WithRequiredPrincipal(ad => ad.Byggesak);
-            */
-
-
-
-
-
-
+            bruker.HasKey(k => k.BrukerID);          
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-
-
-
         }
-
     }
 }
