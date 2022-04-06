@@ -20,9 +20,6 @@ namespace MyPagePrototype.DAL
         public DbSet<Kvittering> Kvitteringer { get; set; }
         public DbSet<Byggesak> Byggesaker { get; set; }
 
-        public DbSet<Innboks> Innboks { get; set; }
-        public DbSet<ByggesakInnboks> ByggesakInnboks { get; set; }
-
         public DbSet<Bruker> Brukere { get; set; }
         public DbSet<KontaktInfo> KontaktInfo { get; set; }
 
@@ -35,12 +32,14 @@ namespace MyPagePrototype.DAL
 
             var byggesak = modelBuilder.Entity<Byggesak>();
 
+            byggesak.HasRequired(r => r.Bruker);
             byggesak.HasOptional(o => o.Kvittering);
             byggesak.HasKey(k => k.ByggesakID);
 
 
             var kontaktinfo = modelBuilder.Entity<KontaktInfo>();
 
+            kontaktinfo.HasRequired(r => r.Bruker);
             kontaktinfo.HasOptional(o => o.Kvittering);
             kontaktinfo.HasKey(k => k.KontaktInfoID);
 
@@ -49,9 +48,15 @@ namespace MyPagePrototype.DAL
             kvittering.HasRequired(r => r.Byggesak);
             kvittering.HasRequired(r => r.KontaktInfo);
             kvittering.HasKey(k => k.KvitteringID);
-            //kvittering.HasKey(k => new { k.ByggesakID, k.KontaktInfoID });
-            
 
+
+            var bruker = modelBuilder.Entity<Bruker>();
+
+            bruker.HasMany(o => o.KontaktInfo);
+            bruker.HasMany(m => m.Byggesaker);
+            bruker.HasMany(m => m.Meldinger);
+            bruker.HasKey(k => k.BrukerID);
+            
 
 
 
