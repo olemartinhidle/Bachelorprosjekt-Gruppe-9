@@ -24,8 +24,10 @@ namespace MyPagePrototype.Models
         public string MeldingAvsender { get; set; }
         public string MeldingFilPath { get; set; }
 
+        public int BrukerID { get; set; }
+        //public virtual ICollection<Innboks> Innboks { get; set; }
 
-        public virtual ICollection<Innboks> Innboks { get; set; }
+        public virtual Bruker Bruker { get; set; }
     }
 
 }

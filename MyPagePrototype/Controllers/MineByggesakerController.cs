@@ -17,13 +17,18 @@ namespace MyPagePrototype.Controllers
         public ActionResult Index()
         {
 
+            string id = Session["brukerID"].ToString();
 
+            int brukerID;
+            Int32.TryParse(id, out brukerID);
+
+            var byggesaker = db.Byggesaker.Where(m => m.BrukerID == brukerID);
 
 
             //var kvitteringer = db.Byggesaker.Include(k => k.Byggesak);
 
 
-            return View(db.Byggesaker.ToList().OrderByDescending(x => x.ByggesakDato));
+            return View(byggesaker.ToList().OrderByDescending(x => x.ByggesakDato));
 
 
         }
@@ -76,7 +81,15 @@ namespace MyPagePrototype.Controllers
         {
             if (ModelState.IsValid)
             {
-               
+
+                string id = Session["brukerID"].ToString();
+
+                int brukerID;
+                Int32.TryParse(id, out brukerID);
+
+                byggesak.BrukerID = brukerID;
+
+
                 db.Byggesaker.Add(byggesak);
                 db.SaveChanges();
 

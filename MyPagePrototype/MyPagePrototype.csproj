@@ -128,12 +128,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BrukerController.cs" />
-    <Compile Include="Controllers\ByggesakController.cs" />
     <Compile Include="Controllers\KontaktInfoController.cs" />
     <Compile Include="Controllers\KvitteringController.cs" />
-    <Compile Include="Controllers\MeldingController.cs" />
-    <Compile Include="Controllers\MineByggesakerController.cs" />
     <Compile Include="Controllers\InnboksController.cs" />
+    <Compile Include="Controllers\MineByggesakerController.cs" />
     <Compile Include="Controllers\HjemController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="DAL\MinSideContext.cs" />
@@ -143,10 +141,8 @@
     </Compile>
     <Compile Include="Models\KontaktInfo.cs" />
     <Compile Include="Models\Byggesak.cs" />
-    <Compile Include="Models\ByggesakInnboks.cs" />
     <Compile Include="Models\Kvittering.cs" />
     <Compile Include="Models\Melding.cs" />
-    <Compile Include="Models\Innboks.cs" />
     <Compile Include="Models\Bruker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -202,21 +198,6 @@
     <Content Include="Views\MineByggesaker\Kvittering.cshtml" />
     <Content Include="Views\MineByggesaker\Oppsummering.cshtml" />
     <Content Include="Views\Innboks\Liste.cshtml" />
-    <Content Include="Views\Melding\Create.cshtml" />
-    <Content Include="Views\Melding\Delete.cshtml" />
-    <Content Include="Views\Melding\Details.cshtml" />
-    <Content Include="Views\Melding\Edit.cshtml" />
-    <Content Include="Views\Melding\Index.cshtml" />
-    <Content Include="Views\Bruker\Create.cshtml" />
-    <Content Include="Views\Bruker\Delete.cshtml" />
-    <Content Include="Views\Bruker\Details.cshtml" />
-    <Content Include="Views\Bruker\Edit.cshtml" />
-    <Content Include="Views\Bruker\Index.cshtml" />
-    <Content Include="Views\Byggesak\Create.cshtml" />
-    <Content Include="Views\Byggesak\Delete.cshtml" />
-    <Content Include="Views\Byggesak\Details.cshtml" />
-    <Content Include="Views\Byggesak\Edit.cshtml" />
-    <Content Include="Views\Byggesak\Index.cshtml" />
     <Content Include="Views\KontaktInfo\Send.cshtml" />
     <Content Include="Views\KontaktInfo\Details.cshtml" />
     <Content Include="Views\KontaktInfo\Index.cshtml" />

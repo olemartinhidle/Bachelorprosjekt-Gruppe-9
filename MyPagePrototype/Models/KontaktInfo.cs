@@ -16,9 +16,13 @@ namespace MyPagePrototype.Models
         public string Epost { get; set; }
         public bool MailØnsket { get; set; }
         public bool Samtykke { get; set; }
+
+        public int BrukerID { get; set; }
         //public int? KvitteringID { get; set; }
 
         public virtual Kvittering Kvittering { get; set; }
+
+        public virtual Bruker Bruker { get; set; }
 
     }
 }

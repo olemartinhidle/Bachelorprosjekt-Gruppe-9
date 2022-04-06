@@ -42,9 +42,13 @@ namespace MyPagePrototype.Models
         //Må kanskje fjernes
         public int? KvitteringID { get; set; }
 
+        public int BrukerID { get; set; }
+
         //public virtual ICollection<ByggesakInnboks> ByggesakInnboks { get; set; }
        
         public virtual Kvittering Kvittering { get; set; }
+
+        public virtual Bruker Bruker { get; set; }
 
     }
 

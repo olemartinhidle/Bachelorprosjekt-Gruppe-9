@@ -15,14 +15,15 @@ namespace MyPagePrototype.Controllers
     {
         private MinSideContext db = new MinSideContext();
 
-        // GET: Bruker
+        // GET: Brukers
         public ActionResult Index()
         {
             var brukere = db.Brukere;
+                //.Include(b => b.KontaktInfo);
             return View(brukere.ToList());
         }
 
-        // GET: Bruker/Details/5
+        // GET: Brukers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,19 +38,19 @@ namespace MyPagePrototype.Controllers
             return View(bruker);
         }
 
-        // GET: Bruker/Create
+        // GET: Brukers/Create
         public ActionResult Create()
         {
-            ViewBag.BrukerID = new SelectList(db.Kvitteringer, "KvitteringID", "Kommentar");
+            ViewBag.BrukerID = new SelectList(db.KontaktInfo, "KontaktInfoID", "Navn");
             return View();
         }
 
-        // POST: Bruker/Create
+        // POST: Brukers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BrukerID,Navn,Telefonnummer,Epost,MailØnsket,Samtykke")] Bruker bruker)
+        public ActionResult Create([Bind(Include = "BrukerID,Navn,Passord,Telefonnummer,Epost")] Bruker bruker)
         {
             if (ModelState.IsValid)
             {
@@ -58,11 +59,11 @@ namespace MyPagePrototype.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BrukerID = new SelectList(db.Kvitteringer, "KvitteringID", "Kommentar", bruker.BrukerID);
+            ViewBag.BrukerID = new SelectList(db.KontaktInfo, "KontaktInfoID", "Navn", bruker.BrukerID);
             return View(bruker);
         }
 
-        // GET: Bruker/Edit/5
+        // GET: Brukers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,16 +75,16 @@ namespace MyPagePrototype.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BrukerID = new SelectList(db.Kvitteringer, "KvitteringID", "Kommentar", bruker.BrukerID);
+            ViewBag.BrukerID = new SelectList(db.KontaktInfo, "KontaktInfoID", "Navn", bruker.BrukerID);
             return View(bruker);
         }
 
-        // POST: Bruker/Edit/5
+        // POST: Brukers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BrukerID,Navn,Telefonnummer,Epost,MailØnsket,Samtykke")] Bruker bruker)
+        public ActionResult Edit([Bind(Include = "BrukerID,Navn,Passord,Telefonnummer,Epost")] Bruker bruker)
         {
             if (ModelState.IsValid)
             {
@@ -91,11 +92,11 @@ namespace MyPagePrototype.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BrukerID = new SelectList(db.Kvitteringer, "KvitteringID", "Kommentar", bruker.BrukerID);
+            ViewBag.BrukerID = new SelectList(db.KontaktInfo, "KontaktInfoID", "Navn", bruker.BrukerID);
             return View(bruker);
         }
 
-        // GET: Bruker/Delete/5
+        // GET: Brukers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +111,7 @@ namespace MyPagePrototype.Controllers
             return View(bruker);
         }
 
-        // POST: Bruker/Delete/5
+        // POST: Brukers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+
+    
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -12,6 +16,13 @@
 
 </head>
 <body>
+    @{
+        string navn = Session["brukerNavn"].ToString();
+        //string epost = Session["brukerEpost"].ToString();
+
+
+    }
+
 
     <div class="border-bottom">
         <div class="container" id="header">
@@ -24,7 +35,9 @@
                     <div class="align-self-center">
                         <div class="user-name">
                             <i class="fas fa-user" aria-hidden="true"> </i>
-                            <span class="capitalFirstLetter">Normann Ola Svensen </span>
+                            <span class="capitalFirstLetter">
+                                @navn <!--Normann Ola Svensen -->
+                            </span>
                         </div>
                     </div><div class="align-self-center logout">
                         <a href="/logout" class="logout-link nav-link">Logg ut</a>

@@ -39,7 +39,18 @@ namespace MyPagePrototype.Controllers
         // GET: KontaktInfo/Create
         public ActionResult Send()
         {
-            return View();
+
+            var bruktID = new List<int>();
+            foreach (var item in db.KontaktInfo)
+            {
+                bruktID.Add(item.KontaktInfoID);
+            }
+            int id = bruktID.Max();
+            
+
+            KontaktInfo info = db.KontaktInfo.Find(id);
+
+            return View(info);
         }
 
         // POST: KontaktInfo/Create
@@ -51,7 +62,14 @@ namespace MyPagePrototype.Controllers
         {
             if (ModelState.IsValid)
             {
-               
+
+                string id = Session["brukerID"].ToString();
+
+                int brukerID;
+                Int32.TryParse(id, out brukerID);
+
+                kontaktInfo.BrukerID = brukerID;
+
                 //var byggID = TempData["tempID"];
                 db.KontaktInfo.Add(kontaktInfo);
                 db.SaveChanges();

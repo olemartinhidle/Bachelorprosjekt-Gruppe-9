@@ -1,4 +1,4 @@
-﻿<!--model MyPagePrototype.Models.Bruker-->
+﻿@model MyPagePrototype.Models.Bruker
 
 @{
     ViewBag.Title = "Index";
@@ -32,12 +32,14 @@
                             <tbody>
                                 <tr>
                                     <td class="data-label">E-post</td>
-                                    <td class="data-value ellipse">OlaNormann@mail.com</td>
+                                    <td class="data-value ellipse">
+                                    @Html.DisplayFor(model => model.Epost)
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="data-label">Mobil</td>
                                     <td class="data-value">
-                                        <a href="tel:44444444">44444444</a>
+                                        <a href="tel:@Html.DisplayFor(model => model.Telefonnummer)">@Html.DisplayFor(model => model.Telefonnummer)</a>
                                     </td>
                                 </tr>
                                 <tr>
