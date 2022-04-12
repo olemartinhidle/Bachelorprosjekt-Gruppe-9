@@ -34,12 +34,13 @@
             // looper igjennm elementene for modellen
             foreach (var item in Model)
             {
-                // Finner kvitteringsID
-                int? id = item.KvitteringID;
-                if (id == null || id == 0)
-                {
-                    // Finner bruker id
-                    TempData["ForSlett"] = item.ByggesakID;
+                try {
+                    // Finner kvitteringsID
+                    int? id = item.KvitteringID;
+                    if (id == null || id == 0)
+                    {
+                        // Finner bruker id
+                        TempData["ForSlett"] = item.ByggesakID;
                     <script>
 
                         function redirect() {
@@ -47,8 +48,8 @@
                         }
                         setTimeout(redirect, 1); // Tall i millisekund
                     </script>
-                    continue;
-                }
+                        continue;
+                    }
 
                 @:<button class="sakboks-box-btn" onclick="window.location.href='@Url.Action("Detaljer", "Kvittering", new { id = item.KvitteringID })'">
                     @:<div class="sakboks-box">
@@ -57,37 +58,50 @@
                             @:<div class="sakboks-arrow">
                             @:</div>
                             // Håndterer status
-                            if (item.ByggesakStatus == "Ubehandlet")
-                            {
+                    if (item.ByggesakStatus == "Ubehandlet")
+                    {
                                 @:<div class="saksboks-status-ib">
                                     @item.ByggesakStatus;
                                 @:</div>
                             }
-                            if (item.ByggesakStatus == "Under behandling")
-                            {
+                    if (item.ByggesakStatus == "Under behandling")
+                    {
                                 @:<div class="saksboks-status-ub">
                                     @item.ByggesakStatus;
                                 @:</div>
                             }
-                            if (item.ByggesakStatus == "Ferdig behandlet")
-                            {
+                    if (item.ByggesakStatus == "Ferdig behandlet")
+                    {
                                 @:<div class="saksboks-status-fb">
                                     @item.ByggesakStatus;
                                 @:</div>
                             }
                         @:</div>
-                        @:<div class="saksboks-dato">
-                            // Gjør dato til string
-                            string stringDato = item.ByggesakDato.ToString();
-                            // Formaterer dato
-                            stringDato = stringDato.Remove(10, 9);
+                        @:<div class="saksboks-dato">  
+                            string stringDato;
+                    try
+                    {
+                        // Gjør dato til string
+                        // Formaterer dato
+                        stringDato = item.ByggesakDato.ToString().Remove(10, 9);
 
+                    } catch (Exception ex)
+                    {
+                        string Error = ex.Message;
+                        stringDato = "--/--/----";
+                        throw ex;
+                    }
                             @stringDato;
 
                         @:</div>
                     @:</div>
                 @:</button>
-            }
+            } catch (Exception ex) 
+                {
+                    string Error = ex.Message;
+                    continue;
+                }
+                }
         }
         else
         {

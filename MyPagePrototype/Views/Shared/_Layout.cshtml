@@ -12,11 +12,6 @@
 
 </head>
 <body>
-    @{
-        // Finner navn på bruker fra session
-        string navn = Session["brukerNavn"].ToString();
-
-    }
 
     <div class="border-bottom">
         <div class="container" id="header">
@@ -30,11 +25,20 @@
                         <div class="user-name">
                             <i class="fas fa-user" aria-hidden="true"> </i>
                             <span class="capitalFirstLetter">
-                                @navn
+                                @{ 
+                                    // Finner navn på bruker fra session
+                                    if (ViewBag.Title != "Logget ut")
+                                    {
+                                        string navn = Session["brukerNavn"].ToString();
+                                    @navn
+                                    }
+                                    }
                             </span>
                         </div>
                     </div><div class="align-self-center logout">
-                        <a href="/logout" class="logout-link nav-link">Logg ut</a>
+                        @{ if (ViewBag.Title != "Logget ut") {
+                        @:<a href="/../Hjem/LoggUt" class="logout-link nav-link">Logg ut</a>
+                        }}
                         <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
                     </div>
                 </div>
