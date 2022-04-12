@@ -35,19 +35,27 @@
             // Looper igjenom elementene inne i modellen
             foreach (var item in Model)
             {
-            
+
                 @:<div class="mld-inn">
                     @:<div class="o-strek-inn">
                         @:<div class="l-1-inn">
                             @:<h4 class="d-mld-inn">
+
+
                 // Omgjør dato til string
-                string meldingsString = item.MeldingDato.ToString();
-
                 // Fjerner uønskede nuller i formateringen
-                meldingsString = meldingsString.Remove(10, 9);
-                meldingsString = meldingsString.Remove(6, 2);
-
-                                @meldingsString;
+                string meldingsString;
+                try
+                {
+                    meldingsString = item.MeldingDato.ToString().Remove(10, 9).Remove(6, 2);
+                } catch (Exception ex)
+                {
+                    string Error = ex.Message;
+                    meldingsString = "--/ --/ --";
+                    throw ex;
+                }
+                @meldingsString;
+                                
 
                             @:</h4>
                             @:<h4 class="tittel-inn">

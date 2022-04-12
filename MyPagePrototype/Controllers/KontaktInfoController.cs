@@ -13,17 +13,26 @@ namespace MyPagePrototype.Controllers
 {
     public class KontaktInfoController : Controller
     {
+        private string Err;
         private MinSideContext db = new MinSideContext();
 
         // Henter listen for å lagre ny kontaktinfo til denne saken
         // Fyller inn med nyligste inførte info
         public ActionResult Send()
         {
-            // Finner den kontaktifoen med den høyeste id en, nyliste*
-            KontaktInfo info = db.KontaktInfo.OrderByDescending(k => k.KontaktInfoID).FirstOrDefault();
+            try
+            {
+                int brukerID = Convert.ToInt32(Session["brukerID"]);
+                // Finner den kontaktifoen med den høyeste id en, nyliste*
+                KontaktInfo info = db.KontaktInfo.Where(k => k.BrukerID == brukerID).OrderByDescending(k => k.KontaktInfoID).FirstOrDefault();
 
-            // Fyller dette inn i listen på siden
-            return View(info);
+                // Fyller dette inn i listen på siden
+                return View(info);
+            } catch (Exception ex)
+            {
+                Err = ex.Message;
+                return View(Err);
+            }
         }
 
         // POST: KontaktInfo/Create
@@ -34,35 +43,47 @@ namespace MyPagePrototype.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Send([Bind(Include = "Navn,Telefonnummer,Epost,MailØnsket,Samtykke")] KontaktInfo kontaktInfo)
         {
-            if (ModelState.IsValid)
+            try
             {
-                // Henter bruker id fra session
-                // Omgjør string til int
-                int brukerID = Convert.ToInt32(Session["brukerID"]);
-                
-                // Setter brukerID til den gitte int i kontaktinfoen
-                kontaktInfo.BrukerID = brukerID;
-                // Legger til den nye kontaktinfoen til db instansen
-                db.KontaktInfo.Add(kontaktInfo);
-                // Lagrer endringene
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    // Henter bruker id fra session
+                    // Omgjør string til int
+                    int brukerID = Convert.ToInt32(Session["brukerID"]);
 
-                return RedirectToAction("/../Kvittering/GenKvittering");
+                    // Setter brukerID til den gitte int i kontaktinfoen
+                    kontaktInfo.BrukerID = brukerID;
+                    // Legger til den nye kontaktinfoen til db instansen
+                    db.KontaktInfo.Add(kontaktInfo);
+                    // Lagrer endringene
+                    db.SaveChanges();
 
+                    return RedirectToAction("/../Kvittering/GenKvittering");
+
+                }
+                // Ellers returnerer den til siden
+                return View(kontaktInfo);
+            } catch (Exception ex) 
+            { 
+                Err = ex.Message;
+                return View(Err); 
             }
-            // Ellers returnerer den til siden
-            return View(kontaktInfo);
         }
 
         // Frigir ressurser
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
+            try {
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+                base.Dispose(disposing);
+            } catch (Exception ex) 
+            { 
+                Err = ex.Message; 
             }
-            base.Dispose(disposing);
-        }
+            }
 
     }
 }

@@ -13,42 +13,65 @@ namespace MyPagePrototype.Controllers
 {
     public class InnboksController : Controller
     {
+        private string Err;
         // Ny db instans
         private MinSideContext db = new MinSideContext();
 
         // Viser til meldinger som er sendt til en gitt bruker
         public ActionResult Index()
         {
-            // Bruker ID som er lagret i session
-            string id = Session["brukerID"].ToString();
-            // Omgjør ID til en int
-            Int32.TryParse(id, out int brukerID);
-            // Finner meldinger basert på den gitte ID
-            var meldinger = db.Meldinger.Where(m => m.BrukerID == brukerID);
-            // Returnerer siden med meldingene til denne brukeren
-            return View(meldinger.ToList());
+            try
+            {
+                // Bruker ID som er lagret i session
+                int brukerID = Convert.ToInt32(Session["brukerID"]);
+                
+                // Finner meldinger basert på den gitte ID
+                var meldinger = db.Meldinger.Where(m => m.BrukerID == brukerID).ToList();
+
+
+                // Returnerer siden med meldingene til denne brukeren
+                return View(meldinger);
+
+            } catch (Exception ex)
+            {
+                Err = ex.Message;
+                return View(Err);
+            }
         }
 
-        // Sletter en gitt      
+        // Sletter en gitt melding
         public ActionResult Slett(int? mid)
         {
-            // Nytt meldingsobjekt basert på id
-            Melding melding = db.Meldinger.Find(mid);
-            // Fjerner medling
-            db.Meldinger.Remove(melding);
-            // Lagre endring
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                // Nytt meldingsobjekt basert på id
+                Melding melding = db.Meldinger.Find(mid);
+                // Fjerner medling
+                db.Meldinger.Remove(melding);
+                // Lagre endring
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            } catch(Exception ex) 
+            { 
+                Err = ex.Message; 
+                return View(Err); 
+            }
         }
 
         // Frigir ressurser
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            try
             {
-                db.Dispose();
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+                base.Dispose(disposing);
+            } catch(Exception ex)
+            {
+                Err = ex.Message;
             }
-            base.Dispose(disposing);
         }
     }
 }
