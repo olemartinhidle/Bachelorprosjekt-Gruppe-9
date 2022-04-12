@@ -11,6 +11,7 @@ using MyPagePrototype.Models;
 
 namespace MyPagePrototype.Controllers
 {
+    [Authorize]
     public class InnboksController : Controller
     {
         private string Err;

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using MyPagePrototype.DAL;
 using MyPagePrototype.Models;
 
@@ -20,6 +21,7 @@ namespace MyPagePrototype.Controllers
        
 
         // Åpner en hjem side, som om en bruker er logget inn
+        [AllowAnonymous]
         public ActionResult Index()
         {
             try
@@ -30,6 +32,9 @@ namespace MyPagePrototype.Controllers
 
                 // Finner info om denne brukeren basert på id fra MinID
                 var bruker = db.Brukere.Find(brukerID);
+
+                // Setter logginn Cookie for access
+                FormsAuthentication.SetAuthCookie(bruker.Navn, false);
 
                 // Setter av session vairiabler basert på den innloggede brukeren
                 Session["BrukerID"] = bruker.BrukerID;
@@ -45,6 +50,7 @@ namespace MyPagePrototype.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult LoggInn()
         {
             try
@@ -62,6 +68,7 @@ namespace MyPagePrototype.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult LoggUt()
         {
             try
@@ -69,7 +76,9 @@ namespace MyPagePrototype.Controllers
                     // Fjerner all temp data
                     TempData.Clear();
                     // Fjerner alt fra Session
-                    Session.RemoveAll();
+                    Session.Clear();
+                    // Logg ut
+                    FormsAuthentication.SignOut();
                     // Sender bruker til logget ut siden
                     return View("LoggUt");
 
@@ -83,6 +92,7 @@ namespace MyPagePrototype.Controllers
 
         // Tom side som sender bruker tilbake til hjem siden, ettersom det er mange funksjoner vi ikke tar stilling til
         // På kommunens hjemmeside i denne prototypen
+        [Authorize]
         public ActionResult Placeholder()
         {
             try
