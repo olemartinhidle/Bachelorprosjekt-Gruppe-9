@@ -11,6 +11,7 @@ using MyPagePrototype.Models;
 
 namespace MyPagePrototype.Controllers
 {
+    [Authorize]
     public class KontaktInfoController : Controller
     {
         private string Err;

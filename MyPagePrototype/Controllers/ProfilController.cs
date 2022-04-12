@@ -11,6 +11,7 @@ using MyPagePrototype.Models;
 
 namespace MyPagePrototype.Controllers
 {
+    [Authorize]
     public class ProfilController : Controller
     {
         private string Err;

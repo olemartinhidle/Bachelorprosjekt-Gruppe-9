@@ -8,6 +8,7 @@ using MyPagePrototype.Models;
 
 namespace MyPagePrototype.Controllers
 {
+    [Authorize]
     public class MineByggesakerController : Controller
     {
         private string Err;
@@ -15,6 +16,7 @@ namespace MyPagePrototype.Controllers
         private MinSideContext db = new MinSideContext();
 
         // Henter byggesaker til en gitt bruker
+        [Authorize]
         public ActionResult Index()
         {
             try
@@ -141,6 +143,7 @@ namespace MyPagePrototype.Controllers
 
         // Fjerner endring til byggesakene
         // Brukes hvis innsending ikke fullføres
+        
         public ActionResult FjernEndring()
         {
             try
