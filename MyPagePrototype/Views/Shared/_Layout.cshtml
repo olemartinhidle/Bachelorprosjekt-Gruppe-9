@@ -1,8 +1,4 @@
-﻿@{
-
-    
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,10 +13,10 @@
 </head>
 <body>
     @{
+        // Finner navn på bruker fra session
         string navn = Session["brukerNavn"].ToString();
-        
-    }
 
+    }
 
     <div class="border-bottom">
         <div class="container" id="header">
@@ -34,7 +30,7 @@
                         <div class="user-name">
                             <i class="fas fa-user" aria-hidden="true"> </i>
                             <span class="capitalFirstLetter">
-                                @navn 
+                                @navn
                             </span>
                         </div>
                     </div><div class="align-self-center logout">
@@ -45,7 +41,7 @@
             </div>
         </div>
     </div>
-
+    <!-- Tilpasser navbar basert på hvilken side man er på -->
     @if ((ViewBag.Title == "Oppsummering") || (ViewBag.Title == "RegistrerSak") || (ViewBag.Title == "KontaktSkjema") || (ViewBag.Title == "Detaljer"))
     {
         @:<div class="nav-bar-sum">
@@ -81,15 +77,8 @@
                     @:<div class="site-1">3. Oppsummering</div>
                 }
             @:</div>
-            if (ViewBag.Title != "Detaljer")
-            {
-                @:<button class="nav-btn-2" onclick="window.location.href='Index'">Mine byggesaker</button>
-            }
-            else
-            {
                 @:<button class="nav-btn-2" onclick="window.location.href='../../MineByggesaker/Index'">Mine byggesaker</button>
-            }
-        @:</div>
+            @:</div>
     }
 
     <div class="body-layout">

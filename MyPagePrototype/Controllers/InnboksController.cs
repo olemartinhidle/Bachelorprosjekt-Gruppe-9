@@ -13,118 +13,35 @@ namespace MyPagePrototype.Controllers
 {
     public class InnboksController : Controller
     {
+        // Ny db instans
         private MinSideContext db = new MinSideContext();
 
-        // GET: Meldings
+        // Viser til meldinger som er sendt til en gitt bruker
         public ActionResult Index()
         {
+            // Bruker ID som er lagret i session
             string id = Session["brukerID"].ToString();
-
+            // Omgjør ID til en int
             Int32.TryParse(id, out int brukerID);
-
+            // Finner meldinger basert på den gitte ID
             var meldinger = db.Meldinger.Where(m => m.BrukerID == brukerID);
+            // Returnerer siden med meldingene til denne brukeren
             return View(meldinger.ToList());
         }
 
-        // GET: Meldings/Details/5
-        public ActionResult Details(int? id)
+        // Sletter en gitt      
+        public ActionResult Slett(int? mid)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Melding melding = db.Meldinger.Find(id);
-            if (melding == null)
-            {
-                return HttpNotFound();
-            }
-            return View(melding);
-        }
-
-        // GET: Meldings/Create
-        public ActionResult Create()
-        {
-            ViewBag.BrukerID = new SelectList(db.Brukere, "BrukerID", "Navn");
-            return View();
-        }
-
-        // POST: Meldings/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MeldingID,MeldingDato,MeldingTittel,MeldingAvsender,MeldingFilPath,BrukerID")] Melding melding)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Meldinger.Add(melding);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.BrukerID = new SelectList(db.Brukere, "BrukerID", "Navn", melding.BrukerID);
-            return View(melding);
-        }
-
-        // GET: Meldings/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Melding melding = db.Meldinger.Find(id);
-            if (melding == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.BrukerID = new SelectList(db.Brukere, "BrukerID", "Navn", melding.BrukerID);
-            return View(melding);
-        }
-
-        // POST: Meldings/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MeldingID,MeldingDato,MeldingTittel,MeldingAvsender,MeldingFilPath,BrukerID")] Melding melding)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(melding).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.BrukerID = new SelectList(db.Brukere, "BrukerID", "Navn", melding.BrukerID);
-            return View(melding);
-        }
-
-        // GET: Meldings/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Melding melding = db.Meldinger.Find(id);
-            if (melding == null)
-            {
-                return HttpNotFound();
-            }
-            return View(melding);
-        }
-
-        // POST: Meldings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Melding melding = db.Meldinger.Find(id);
+            // Nytt meldingsobjekt basert på id
+            Melding melding = db.Meldinger.Find(mid);
+            // Fjerner medling
             db.Meldinger.Remove(melding);
+            // Lagre endring
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
+        // Frigir ressurser
         protected override void Dispose(bool disposing)
         {
             if (disposing)

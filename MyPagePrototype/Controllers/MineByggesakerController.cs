@@ -10,136 +10,145 @@ namespace MyPagePrototype.Controllers
 {
     public class MineByggesakerController : Controller
     {
-
+        // Lager DB instans
         private MinSideContext db = new MinSideContext();
 
-        // GET: Byggesaker
+        // Henter byggesaker til en gitt bruker
         public ActionResult Index()
         {
+            // Omgjør session til int
+            int brukerID = Convert.ToInt32(Session["brukerID"]);
+            
+            // Sjekker etter feil i samling
+            var kontroll = db.Byggesaker.
+                Where(m => m.BrukerID == brukerID).
+                Where(f => f.KvitteringID == null).
+                ToList();
 
-            string id = Session["brukerID"].ToString();
-
-            Int32.TryParse(id, out int brukerID);
-
-            var byggesaker = db.Byggesaker.Where(m => m.BrukerID == brukerID);
-
-            return View(byggesaker.ToList().OrderByDescending(x => x.ByggesakDato));
-
-
-        }
-
-        // GET: Byggesaker/Details/5
-        public ActionResult Detaljer(int id)
-        {
-            return View();
-        }
-
-        public ActionResult Oppsummering()
-        {
-            if ((TempData["shortMessage"] != null))
+            // Hvis noen feil er funnet
+            if (kontroll.Count > 0)
             {
-                ViewBag.Status = TempData["shortMessage"].ToString();
+                foreach (var item in kontroll)
+                {
+                    TempData["ForSlett"] = item.ByggesakID;
+                    RedirectToAction("FjernEndring");
+                }
             }
-            return View();
+
+            // Henter byggesaker
+            var byggesaker = db.Byggesaker.
+                Where(m => m.BrukerID == brukerID).
+                ToList().
+                OrderByDescending(x => x.ByggesakDato);
+
+            // Gir tilbake siden med sine byggesaker, i en synkende rekkefølge basert på dato
+            return View(byggesaker);
+
         }
 
-        public ActionResult OppIB()
-        {
-            TempData["shortMessage"] = "ib";
-            return RedirectToAction("Oppsummering");
-        }
-
-        public ActionResult OppUB()
-        {
-            TempData["shortMessage"] = "ub";
-            return RedirectToAction("Oppsummering");
-        }
-
-        public ActionResult OppFB()
-        {
-            TempData["shortMessage"] = "fb";
-            return RedirectToAction("Oppsummering");
-        }
-
-
-        // GET: Byggesaker/Create
+        // Henter listen for å registrere en ny byggesak
         public ActionResult Registrer()
         {
             ViewBag.ByggesakID = new SelectList(db.Kvitteringer, "KvitteringID", "Kommentar");
             return View();
         }
 
-        // POST: Byggesaker/Create
+        // Henter data fra skjema og registerer en ny byggesak
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Registrer([Bind(Include = "ByggesakID,ByggesakTema,TypeBygg,ByggningsNummer,ByggesakTittel,ByggesakDato,ByggesakStatus,NæringsGruppe,NyttAreal,NyHøyde,KvitteringID")] Byggesak byggesak)
         {
-            if (ModelState.IsValid)
+            // Denne if blokken kjører om en sak ikke ble fullført
+            // Temp 1 er ikke null hvis en registrering ikke ble fullført korrekt
+            if (TempData["tmp1"] != null)
             {
-
-                string id = Session["brukerID"].ToString();
-
-                
-                Int32.TryParse(id, out int brukerID);
-
-                byggesak.BrukerID = brukerID;
-
-
-                db.Byggesaker.Add(byggesak);
-                db.SaveChanges();
-
-
-                var bruktID = new List<int>();
-
-                foreach (var item in db.Byggesaker)
+                if (ModelState.IsValid)
                 {
-                    bruktID.Add(item.ByggesakID);
+                    // Den saken som skal oppdateres som ikke ble fullførts id ligger i Temp 2
+                    int BID = Convert.ToInt32(TempData["tmp2"]);
+                    // Setter denne nye saken til å overskrive den ikke fullførte saken
+                    byggesak.ByggesakID = BID;
+
+                    // Finner bruker id fra session
+                    int brukerID = Convert.ToInt32(Session["brukerID"]);
+                    byggesak.BrukerID = brukerID;
+
+                    // Legger til ny sak i plassen til den ufulførte
+                    db.Byggesaker.Add(byggesak);
+                    // Lagrer endringene
+                    db.SaveChanges();
+
+                    // Setter temp til null
+                    TempData["tmp1"] = null;
+                    TempData["tmp2"] = null;
+
+                    // Sender bruker til kontaktinfo skjema
+                    return RedirectToAction("/../KontaktInfo/Send");
                 }
+            }
+            else {
+                // Denne blokken kjører hvis alt er som det skal være
+                // Hvis modellen er gyldig
+                if (ModelState.IsValid)
+                {
+                    // Finner brukerID
+                    int brukerID = Convert.ToInt32(Session["brukerID"]);
 
-                int maxid = bruktID.Max();
+                    // Setter byggesakens bruker id som den gitte bruker id
+                    byggesak.BrukerID = brukerID;
 
-                byggesak.ByggesakID = maxid;
+                    // Lager en ny byggesakID basert på høyeste verdi i samlingen og legger til 1
+                    byggesak.ByggesakID = db.Byggesaker.OrderByDescending(m => m.ByggesakID).FirstOrDefault().ByggesakID + 1;
 
-                TempData["tempID"] = byggesak.ByggesakID;               
+                    // Legger til byggesaken i db instans
+                    db.Byggesaker.Add(byggesak);
+                    // Lagrer endringene
+                    db.SaveChanges();
 
-                return RedirectToAction("/../KontaktInfo/Send");
+                    // Sender bruker til skjema for å legge til ny kontaktinfo i saken
+                    return RedirectToAction("/../KontaktInfo/Send");
+
+                }
             }
 
             ViewBag.ByggesakID = new SelectList(db.Kvitteringer, "KvitteringID", "Kommentar", byggesak.ByggesakID);
+            // Ellers returneres siden med data
             return View(byggesak);
         }
 
-
-        // GET: Byggesaker/Create
-        public ActionResult KontaktSkjema()
-        {
-            return View();
-        }
-
-        // POST: Byggesaker/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult KontaktSkjema([Bind(Include = "ID,Navn,Telefonnummer,Epost,MailØnsket,Samtykke")] KontaktInfo kontaktInfo)
-        {
-            if (ModelState.IsValid)
-            {
-                db.KontaktInfo.Add(kontaktInfo);
-                db.SaveChanges();
-                return RedirectToAction("OppIB");
-            }
-
-            return View(kontaktInfo);
-        }
-
+        // Fjerner endring til byggesakene
+        // Brukes hvis innsending ikke fullføres
         public ActionResult FjernEndring()
         {
-            int bid =Int32.Parse(TempData["bid"].ToString());
 
+            // Finner byggesak id
+            int bid = Convert.ToInt32(TempData["ForSlett"]);
+            // Finner byggesaken med den gitte ID
             var sak = db.Byggesaker.Find(bid);
+
+            // Setter temp data for bruk ved ny byggesak
+            TempData["tmp1"] = "IF";
+            // Finner id fra den ufullførte saken
+            TempData["tmp2"] = sak.ByggesakID;
+
+            // Fjerner den gitte byggesak
             db.Byggesaker.Remove(sak);
+            // Lagrer endringene
             db.SaveChanges();
 
+            // Sender bruker til byggesak listen
             return RedirectToAction("Index");
+
+        }
+
+        // Frigir ressurser
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 
