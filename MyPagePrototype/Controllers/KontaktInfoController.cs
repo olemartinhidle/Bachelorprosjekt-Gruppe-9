@@ -15,137 +15,53 @@ namespace MyPagePrototype.Controllers
     {
         private MinSideContext db = new MinSideContext();
 
-        // GET: KontaktInfo
-        public ActionResult Index()
-        {
-            return View(db.KontaktInfo.ToList());
-        }
-
-        // GET: KontaktInfo/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            KontaktInfo kontaktInfo = db.KontaktInfo.Find(id);
-            if (kontaktInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kontaktInfo);
-        }
-
-        // GET: KontaktInfo/Create
+        // Henter listen for å lagre ny kontaktinfo til denne saken
+        // Fyller inn med nyligste inførte info
         public ActionResult Send()
         {
+            // Finner den kontaktifoen med den høyeste id en, nyliste*
+            KontaktInfo info = db.KontaktInfo.OrderByDescending(k => k.KontaktInfoID).FirstOrDefault();
 
-            var bruktID = new List<int>();
-            foreach (var item in db.KontaktInfo)
-            {
-                bruktID.Add(item.KontaktInfoID);
-            }
-            int id = bruktID.Max();
-            
-
-            KontaktInfo info = db.KontaktInfo.Find(id);
-
+            // Fyller dette inn i listen på siden
             return View(info);
         }
 
         // POST: KontaktInfo/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Sender sak, og lager ny kontakt info som brukes i kvittering
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Send([Bind(Include = "Navn,Telefonnummer,Epost,MailØnsket,Samtykke")] KontaktInfo kontaktInfo)
         {
             if (ModelState.IsValid)
             {
-
-                string id = Session["brukerID"].ToString();
-
-                Int32.TryParse(id, out int brukerID);
-
+                // Henter bruker id fra session
+                // Omgjør string til int
+                int brukerID = Convert.ToInt32(Session["brukerID"]);
+                
+                // Setter brukerID til den gitte int i kontaktinfoen
                 kontaktInfo.BrukerID = brukerID;
-
+                // Legger til den nye kontaktinfoen til db instansen
                 db.KontaktInfo.Add(kontaktInfo);
+                // Lagrer endringene
                 db.SaveChanges();
-
-                var bruktID = new List<int>();
-
-                foreach (var item in db.KontaktInfo)
-                {
-                    bruktID.Add(item.KontaktInfoID);
-                }
-
-                int maxid = bruktID.Max();
-
-                kontaktInfo.KontaktInfoID = maxid;
-            
-                TempData["kontID"] = kontaktInfo.KontaktInfoID;
 
                 return RedirectToAction("/../Kvittering/GenKvittering");
-            }
 
+            }
+            // Ellers returnerer den til siden
             return View(kontaktInfo);
         }
 
-        // GET: KontaktInfo/Edit/5
-        public ActionResult Edit(int? id)
+        // Frigir ressurser
+        protected override void Dispose(bool disposing)
         {
-            if (id == null)
+            if (disposing)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Dispose();
             }
-            KontaktInfo kontaktInfo = db.KontaktInfo.Find(id);
-            if (kontaktInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kontaktInfo);
-        }
-
-        // POST: KontaktInfo/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Navn,Telefonnummer,Epost,MailØnsket,Samtykke")] KontaktInfo kontaktInfo)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(kontaktInfo).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(kontaktInfo);
-        }
-
-        // GET: KontaktInfo/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            KontaktInfo kontaktInfo = db.KontaktInfo.Find(id);
-            if (kontaktInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kontaktInfo);
-        }
-
-        // POST: KontaktInfo/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            KontaktInfo kontaktInfo = db.KontaktInfo.Find(id);
-            db.KontaktInfo.Remove(kontaktInfo);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            base.Dispose(disposing);
         }
 
     }

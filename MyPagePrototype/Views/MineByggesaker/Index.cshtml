@@ -31,27 +31,32 @@
     @{
         if (Model != null)
         {
+            // looper igjennm elementene for modellen
             foreach (var item in Model)
             {
-
+                // Finner kvitteringsID
                 int? id = item.KvitteringID;
                 if (id == null || id == 0)
                 {
-                    TempData["bid"] = item.BrukerID;
+                    // Finner bruker id
+                    TempData["ForSlett"] = item.ByggesakID;
                     <script>
+
                         function redirect() {
                             window.location.href = "/MineByggesaker/FjernEndring";
                         }
                         setTimeout(redirect, 1); // Tall i millisekund
                     </script>
+                    continue;
                 }
-                
+
                 @:<button class="sakboks-box-btn" onclick="window.location.href='@Url.Action("Detaljer", "Kvittering", new { id = item.KvitteringID })'">
                     @:<div class="sakboks-box">
                         @:<div class="sakboks-txt">
                             @item.ByggesakTittel;
                             @:<div class="sakboks-arrow">
                             @:</div>
+                            // Håndterer status
                             if (item.ByggesakStatus == "Ubehandlet")
                             {
                                 @:<div class="saksboks-status-ib">
@@ -72,9 +77,9 @@
                             }
                         @:</div>
                         @:<div class="saksboks-dato">
-
+                            // Gjør dato til string
                             string stringDato = item.ByggesakDato.ToString();
-
+                            // Formaterer dato
                             stringDato = stringDato.Remove(10, 9);
 
                             @stringDato;

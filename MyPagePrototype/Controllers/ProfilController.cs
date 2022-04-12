@@ -13,28 +13,31 @@ namespace MyPagePrototype.Controllers
 {
     public class ProfilController : Controller
     {
-
+        // Lager db instans
         private MinSideContext db = new MinSideContext();
 
-
-
-        // GET: Profil
+        // Henter profil siden til en innlogget bruker
         public ActionResult Index()
         {
-            string id = Session["brukerID"].ToString();
+            // Finner brukerID
+            int brukerID = Convert.ToInt32(Session["brukerID"]);
 
-            Int32.TryParse(id, out int brukerID);
-
+            // Finner brukerobjekt
             var bruker = db.Brukere.Find(brukerID);
-
+            // Returnerer siden med brukerobjekt
             return View(bruker);
         }
 
-        // GET: Profil/Details/5
-        public ActionResult Details(int id)
+
+        // Frigir ressurser
+        protected override void Dispose(bool disposing)
         {
-            return View();
-        } 
-        
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }

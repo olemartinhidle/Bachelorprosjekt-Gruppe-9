@@ -127,7 +127,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BrukerController.cs" />
     <Compile Include="Controllers\KontaktInfoController.cs" />
     <Compile Include="Controllers\KvitteringController.cs" />
     <Compile Include="Controllers\InnboksController.cs" />
@@ -197,7 +196,6 @@
     <Content Include="Views\MineByggesaker\Index.cshtml" />
     <Content Include="Views\MineByggesaker\Oppsummering.cshtml" />
     <Content Include="Views\KontaktInfo\Send.cshtml" />
-    <Content Include="Views\KontaktInfo\Index.cshtml" />
     <Content Include="Views\Kvittering\Detaljer.cshtml" />
   </ItemGroup>
   <ItemGroup>

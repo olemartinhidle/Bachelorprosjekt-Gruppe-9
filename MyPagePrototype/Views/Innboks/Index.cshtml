@@ -32,15 +32,18 @@
 
     @{ if (Model != null)
         {
+            // Looper igjenom elementene inne i modellen
             foreach (var item in Model)
             {
+            
                 @:<div class="mld-inn">
                     @:<div class="o-strek-inn">
                         @:<div class="l-1-inn">
                             @:<h4 class="d-mld-inn">
-
+                // Omgjør dato til string
                 string meldingsString = item.MeldingDato.ToString();
 
+                // Fjerner uønskede nuller i formateringen
                 meldingsString = meldingsString.Remove(10, 9);
                 meldingsString = meldingsString.Remove(6, 2);
 
@@ -55,9 +58,10 @@
                             @:<h4 class="avsender-inn">
                                 @Html.DisplayFor(modelItem => item.MeldingAvsender);
                             @:</h4>
-                            @:<a class="slett-inn" href="/#"> Slett </a>
-                            @:<a class="arkiver-inn" href="/#"> Arkiver </a>
-                            @:<a class="utskrift-inn" href="/#"> Utskrift </a>
+              
+                            @Html.ActionLink("Slett", "Slett", new { mid = item.MeldingID }, new { @class = "slett-inn" })
+                            @:<a class="arkiver-inn" href="#"> Arkiver </a>
+                            @:<a class="utskrift-inn" href="#"> Utskrift </a>
                         @:</div>
                     @:</div>
                     @:<div class="u-strek-inn">

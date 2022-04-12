@@ -9,7 +9,6 @@
 }
 
 @using (Html.BeginForm())
-
 {
     @Html.AntiForgeryToken()
     <div class="content-container-60">
@@ -26,7 +25,6 @@
                 <option value="Placeholder">Placeholder</option>
             </select>
         </div>
-
         <br />
 
         <div class="form-group">
@@ -37,21 +35,18 @@
                 <option>Tilbygg</option>
             </select>
         </div>
-
         <br />
 
         <div class="form-group">
             <label>Bygningsnummer</label>
             <input class="input-field" type="number" id="ByggningsNummer" name="ByggningsNummer" required>
         </div>
-
         <br />
 
         <div class="form-group">
             <label>Status</label>
             <input class="input-field" type="text" id="ByggesakStatus" name="ByggesakStatus" value="Ubehandlet" required>
         </div>
-
         <br />
 
         <div class="form-group">
@@ -61,7 +56,6 @@
                 <option value="Næringsbygg">Næringsbygg</option>
             </select>
         </div>
-
         <br />
 
         <div class="form-group-bunn">
@@ -69,9 +63,7 @@
             <input class="i-areal" type="number" name="NyttAreal" id="NyttAreal" required>
 
             <input class="ny-høyde" type="number" name="NyHøyde" id="NyHøyde" required>
-
         </div>
-
         <br />
         <br />
 

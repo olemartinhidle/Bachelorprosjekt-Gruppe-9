@@ -13,57 +13,28 @@ namespace MyPagePrototype.Controllers
 {
     public class KvitteringController : Controller
     {
+        // Setter db instans
         private MinSideContext db = new MinSideContext();
-
-        // GET: Kvittering
-        public ActionResult Index()
-        {
-            var kvitteringer = db.Kvitteringer.Include(k => k.Byggesak).Include(k => k.KontaktInfo);
-            return View(kvitteringer.ToList());
-        }
-
+        
         // POST: Kvittering/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-
+        // Genererer en kvittering basert på kontaktskjema og byggesak
         public ActionResult GenKvittering()
         {
+                // Finner gitt bruker fra session
+                int brukerID = Convert.ToInt32(Session["brukerID"]);
 
+                // Lager den neste IDen basert på den høyeste Iden allerede lagt til, ut frra alle kvitteringer
+                int KvittID = db.Kvitteringer.OrderByDescending(m => m.KvitteringID).FirstOrDefault().KvitteringID + 1;
+                // Finner de ulike IDene som brukes til å generere kvitteringen, basert på innlogget bruker
+                int KontID = db.KontaktInfo.Where(k => k.BrukerID == brukerID).OrderByDescending(m => m.KontaktInfoID).FirstOrDefault().KontaktInfoID;
+                int ByggID = db.Byggesaker.Where(k => k.BrukerID == brukerID).OrderByDescending(m => m.ByggesakID).FirstOrDefault().ByggesakID;
 
-            if (TempData["tempID"] != null || TempData["kontID"] != null)
-            {
-                string byggesakID = TempData["tempID"].ToString();
-                string kontaktID = TempData["kontID"].ToString();
-
-                Int32.TryParse(byggesakID, out int byggID);
-                Int32.TryParse(kontaktID, out int kontID);
-
-                
-                var bruktID = new List<int>();
-                foreach (var item in db.Kvitteringer)
-                {
-                    bruktID.Add(item.KvitteringID);
-                }
-                int maxid = bruktID.Max();
-                int kvittID = maxid + 1;
-
-                int ByggID;
-                int KontID;
-                int KvittID;
-
-                ByggID = byggID;
-                KontID = kontID;
-                KvittID = kvittID;
-
-                Byggesak Byggesak = db.Byggesaker.Find(ByggID);
-
-                Byggesak.KvitteringID = KvittID;
-                db.SaveChanges();
-
-   
-                KontaktInfo Kont = db.KontaktInfo.Find(KontID);
-
-                Kvittering kvitt = new Kvittering
+            // Lager en ny kvittering basert på innsamlet data
+            // Noen av feltene her skal komme fra AI og derfor bare 
+            // Hardkodes i denne prototypen
+            Kvittering kvitt = new Kvittering
                 {
                     KvitteringID = KvittID,
                     KvitteringsDato = DateTime.Now,
@@ -71,38 +42,47 @@ namespace MyPagePrototype.Controllers
                     Vedlegg = "*Ingen vedlegg lagt til",
                     MatrikkelPath = "/Resources/Matrikkel/matrikkel.png",
                     OrtoPath = "/Resources/OrtoPhoto/orto.png",
-                    ByggesakID = Byggesak.ByggesakID,
-                    KontaktInfoID = Kont.KontaktInfoID,
+                    ByggesakID = ByggID,
+                    KontaktInfoID = KontID,
                 };
 
+                // Legger til den nye kvitteringen
                 db.Kvitteringer.Add(kvitt);
+                // Lagrer endringen
                 db.SaveChanges();
-               
-                return RedirectToAction("/../Kvittering/Detaljer/" + KvittID);
 
-            }
-            return View();
+                // Finner et byggesak objekt basert på id
+                Byggesak Byggesak = db.Byggesaker.OrderByDescending(m => m.ByggesakID).FirstOrDefault();
+                // Oppdaterer byggesak med den nye IDen
+                Byggesak.KvitteringID = KvittID;
+                // Lagrer endringen
+                db.SaveChanges();
+
+            // Sender bruker til oppsummering siden
+            return RedirectToAction("/../Kvittering/Detaljer/" + KvittID);
+
         }
 
-        // GET: Kvittering/Details/5
-
+        // Henter siden som viser kvitteringen og dens genererte innhold
         public ActionResult Detaljer(int? id)
         {
+            // Hvis id er tom
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            // Finner et kvitteringsobjekt basert på ID
             Kvittering kvittering = db.Kvitteringer.Find(id);
-
+            // HVis kvittering er tom
             if (kvittering == null)
             {
                 return HttpNotFound();
             }
-
+            // Finner byggesak id
             int sakID = kvittering.ByggesakID;
-
+            // Lager et byggesak objekt
             Byggesak byggesak = db.Byggesaker.Find(sakID);
-
+            // Sjekker statusen på byggesaken
             if (byggesak.ByggesakStatus == "Ubehandlet")
             {
                 ViewBag.Status = "ib";
@@ -115,9 +95,19 @@ namespace MyPagePrototype.Controllers
             {
                 ViewBag.Status = "fb";
             }           
-
+            // Returnerer siden med en gitt kvittering
             return View(kvittering);
         }
-        
+
+        // Frigir ressurser
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }
