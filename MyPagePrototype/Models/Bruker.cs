@@ -18,7 +18,7 @@ namespace MyPagePrototype.Models
         // Navn property
         public string Navn { get; set; }
         // Passord property
-        public int Passord { get; set; }
+        public string Passord { get; set; }
         // Telefonnummer property
         public string Telefonnummer { get; set; }
         // Epost property

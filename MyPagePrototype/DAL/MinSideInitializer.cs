@@ -20,7 +20,7 @@ namespace MyPagePrototype.DAL
                 var brukere = new List<Bruker>
             {
                 // Fyller et nytt brukerobjekt
-            new Bruker{BrukerID=1, Navn="Normann, Ola Svendsen", Passord=123456, Telefonnummer="47474747", Epost="ola@mail.com"}
+            new Bruker{BrukerID=1, Navn="Normann, Ola Svendsen", Passord="123456", Telefonnummer="47474747", Epost="ola@mail.com"}
 
             };
                 // Legger til data fra hvert objekt
