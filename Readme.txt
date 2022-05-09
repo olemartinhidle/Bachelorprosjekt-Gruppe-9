@@ -2,7 +2,7 @@ Read me for bachelorprosjektet ved TietoEvry
 
 ##############################################
 
-For å åpne dette prosjektet åpner man .sl (solution) filen inne i dette repoet med MVS (Microsoft Visual Studio)
+For å åpne dette prosjektet åpner man .sln (solution) filen inne i dette repoet med MVS (Microsoft Visual Studio)
 
 Dette prosjektet er delt inn i to del prosjekter:
 
