@@ -10,7 +10,7 @@ using MyPagePrototype.Models;
 namespace MyPagePrototype.Test.DAL
 {
     // Test klasse for test av MinSideContext
-    [TestClass()]
+    [TestClass]
     public class MinSideContextTests
     {
         // Const for denne testen
@@ -19,7 +19,7 @@ namespace MyPagePrototype.Test.DAL
         }
 
         // Test metode for å legge til data i denne contexten
-        [TestMethod()]
+        [TestMethod]
         public void Legg_Til_Data_Test()
         {
             // Arrange 

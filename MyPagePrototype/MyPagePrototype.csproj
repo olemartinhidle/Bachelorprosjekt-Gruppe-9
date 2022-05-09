@@ -161,7 +161,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Resources\kvittering-img.png" />
     <Content Include="Resources\Matrikkel\matrikkel.png" />
     <Content Include="Resources\OrtoPhoto\orto.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -195,7 +194,6 @@
     <Content Include="Views\Profil\Index.cshtml" />
     <Content Include="Views\Innboks\Index.cshtml" />
     <Content Include="Views\MineByggesaker\Index.cshtml" />
-    <Content Include="Views\MineByggesaker\Oppsummering.cshtml" />
     <Content Include="Views\KontaktInfo\Send.cshtml" />
     <Content Include="Views\Kvittering\Detaljer.cshtml" />
     <Content Include="Views\Hjem\LoggUt.cshtml" />
